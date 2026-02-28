@@ -9,7 +9,7 @@ export default function SignUp() {
       <div className="flex-1 flex flex-col justify-center px-6 py-10 lg:py-0 lg:px-10 xl:px-16">
         {/* Back link */}
         <div className="mb-8">
-            <Link href="/landing-page">
+            <Link href="/">
             
              back
             

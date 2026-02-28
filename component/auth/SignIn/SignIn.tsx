@@ -8,7 +8,7 @@ export default function SignIn() {
       {/* Back link */}
       <div className="p-6 md:p-10">
         <Link
-          href="/landing-page"
+          href="/"
           className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm font-medium"
         >
           ← Back to home

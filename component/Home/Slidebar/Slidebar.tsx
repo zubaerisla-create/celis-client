@@ -3,15 +3,24 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Music, Briefcase, Folder, Store, Headphones } from 'lucide-react';
+import { 
+  Home, 
+  Compass, 
+  Rss, 
+  Briefcase, 
+  Folder, 
+  Store, 
+  Headphones 
+} from 'lucide-react';
 
 const navItems = [
-  { name: 'Home', href: '/dashboard', icon: Music },
-  { name: 'Feed', href: '/feed', icon: Music },
-  { name: 'Briefs', href: '/briefs', icon: Briefcase },
-  { name: 'Projects', href: '/projects', icon: Folder },
-  { name: 'Marketplace', href: '/marketplace', icon: Store },
-  { name: 'Spartst Session', href: '/sessions', icon: Headphones },
+  { name: 'Home', href: '/home', icon: Home },
+  { name: 'Discover', href: '/home/discover', icon: Compass },
+  { name: 'Feed', href: '/home/feed', icon: Rss },
+  { name: 'Briefs', href: '/home/briefs', icon: Briefcase },
+  { name: 'Projects', href: '/home/projects', icon: Folder },
+  { name: 'Marketplace', href: '/home/marketplace', icon: Store },
+  { name: 'Spartst Session', href: '/home/spartst-session', icon: Headphones },
 ];
 
 export default function Sidebar() {

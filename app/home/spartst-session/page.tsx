@@ -1,10 +1,9 @@
-import LandingPage from '@/component/LandingPage/LandingPage'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <LandingPage/>
+        Sparts Session
     </div>
   )
 }
