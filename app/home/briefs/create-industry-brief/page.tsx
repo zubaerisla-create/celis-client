@@ -59,9 +59,11 @@ export default function CreateIndustryBriefPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Header */}
         <div className="mb-10">
-          <a href="#" className="text-zinc-400 hover:text-zinc-200 text-sm flex items-center gap-1 mb-2">
+         <button onClick={() => window.history.back()}>
+             <a href="#" className="text-zinc-400 hover:text-zinc-200 text-sm flex items-center gap-1 mb-2">
             ← Back to Briefs
           </a>
+         </button>
           <h1 className="text-3xl font-bold">Create Industry Brief</h1>
           <p className="text-zinc-400 mt-1">Post an opportunity for the SPARTST community</p>
         </div>

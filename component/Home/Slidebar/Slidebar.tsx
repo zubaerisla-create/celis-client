@@ -10,7 +10,9 @@ import {
   Briefcase, 
   Folder, 
   Store, 
-  Headphones 
+  Headphones,
+  User,
+  Settings
 } from 'lucide-react';
 
 const navItems = [
@@ -78,10 +80,38 @@ export default function Sidebar() {
 
         <div className="bg-zinc-900 p-4 rounded-xl">
           <p className="text-sm font-medium mb-2">Ignite Plan</p>
-          <button className="w-full py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition">
-            Upgrade Now
-          </button>
+          <Link href="/home/subscription-plan">
+            <button className="w-full py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition">
+              Upgrade Now
+            </button>
+          </Link>
         </div>
+
+        {/* Profile link styled like navigation items */}
+        <Link
+          href="/home/profile"
+          className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-colors mt-4 ${
+            pathname === '/home/profile'
+              ? 'bg-zinc-800 text-white'
+              : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+          }`}
+        >
+          <User className="w-5 h-5 flex-shrink-0" />
+          <span className="truncate">Profile</span>
+        </Link>
+
+        {/* Settings link styled like navigation items */}
+        <Link
+          href="/home/settings"
+          className={`flex items-center gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm font-medium transition-colors ${
+            pathname === '/home/settings'
+              ? 'bg-zinc-800 text-white'
+              : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+          }`}
+        >
+          <Settings className="w-5 h-5 flex-shrink-0" />
+          <span className="truncate">Settings</span>
+        </Link>
       </div>
     </aside>
   );
