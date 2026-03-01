@@ -503,6 +503,10 @@ export default function ProjectDetailPage() {
                     <div className="text-2xl font-bold">2</div>
                     <div className="text-xs text-zinc-500">Lyrics</div>
                   </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold">6</div>
+                    <div className="text-xs text-zinc-500">Comments</div>
+                  </div>
                 </div>
               </div>
             </div>

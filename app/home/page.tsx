@@ -1,12 +1,28 @@
 import BriefCard from "@/component/Home/BriefCard/BriefCard";
-
 import ProjectCard from "@/component/Home/ProjectCard/ProjectCard";
 import StatCard from "@/component/Home/StatCard/StatCard";
 import UpgradeBanner from "@/component/Home/UpgradeBanner/UpgradeBanner";
 import UserCard from "@/component/Home/UseCard/UseCard";
-
+import { Eye, Users, Briefcase, Music } from "lucide-react";
 
 export default function Home() {
+  const getIcon = (iconName: string) => {
+    const iconProps = { className: "w-5 h-5" };
+    
+    switch(iconName) {
+      case "eye":
+        return <Eye {...iconProps} />;
+      case "users":
+        return <Users {...iconProps} />;
+      case "briefcase":
+        return <Briefcase {...iconProps} />;
+      case "music":
+        return <Music {...iconProps} />;
+      default:
+        return <></>; // Return empty fragment instead of null
+    }
+  };
+
   return (
     <div className="space-y-10">
       {/* Welcome */}
@@ -16,11 +32,35 @@ export default function Home() {
       </div>
 
       {/* Stats */}
-     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-        <StatCard title="Profile Views" value="1,247" change="+2%" trend="up" icon="eye" />
-        <StatCard title="Collaborations" value="8" change="+2" trend="up" icon="users" />
-        <StatCard title="Active Briefs" value="4" change="+2 new" trend="up" icon="briefcase" />
-        <StatCard title="Works Uploaded" value="23" change="-5" trend="down" icon="music" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+        <StatCard 
+          title="Profile Views" 
+          value="1,247" 
+          change="+2%" 
+          trend="up" 
+          icon={getIcon("eye")} 
+        />
+        <StatCard 
+          title="Collaborations" 
+          value="8" 
+          change="+2" 
+          trend="up" 
+          icon={getIcon("users")} 
+        />
+        <StatCard 
+          title="Active Briefs" 
+          value="4" 
+          change="+2 new" 
+          trend="up" 
+          icon={getIcon("briefcase")} 
+        />
+        <StatCard 
+          title="Works Uploaded" 
+          value="23" 
+          change="-5" 
+          trend="down" 
+          icon={getIcon("music")} 
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

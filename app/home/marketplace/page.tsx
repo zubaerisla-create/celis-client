@@ -198,9 +198,12 @@ export default function Marketplace() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-green-400">{asset.type}</span>
+                  <Link href="/home/marketplace/purchase-license" >
+                  
                     <button className="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-lg text-sm font-medium transition">
                       Purchase License
                     </button>
+                  </Link>
                   </div>
                 </div>
               </div>

@@ -1,8 +1,11 @@
 // app/(dashboard)/discover/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useEffect,useRef, useState } from 'react';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { ChevronDown, Check } from "lucide-react";
+import { div } from 'framer-motion/client';
+import Link from 'next/link';
 
 // Mock data — পরে API থেকে আনবে
 const creators = [
@@ -95,6 +98,32 @@ export default function DiscoverCreatorsPage() {
       creator.genres.some(g => g.toLowerCase().includes(term))
     );
   });
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("Relevance");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const options = [
+    "Relevance",
+    "Most Popular",
+    "Newest",
+    "Best Match",
+  ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
 
   const displayedCreators = filteredCreators.filter(c => {
     if (activeTab === 'discover') return !c.status;
@@ -177,6 +206,45 @@ export default function DiscoverCreatorsPage() {
             <SlidersHorizontal className="w-5 h-5" />
             {showFilters ? 'Hide Filters' : 'Show Filters'}
           </button>
+
+     <div className="relative inline-block" ref={dropdownRef}>
+      
+      {/* Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="
+          flex items-center justify-center gap-2 px-5 py-3.5
+          bg-zinc-900 border border-zinc-700 rounded-xl
+          hover:bg-zinc-800 hover:border-zinc-600 transition-colors
+          sm:min-w-[160px]
+        "
+      >
+        {selected}
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+      </button>
+
+      {/* Dropdown */}
+      {isOpen && (
+        <div className="absolute mt-2 w-full bg-zinc-900 border border-zinc-700 rounded-xl shadow-lg z-50">
+          {options.map((option) => (
+            <button
+              key={option}
+              onClick={() => {
+                setSelected(option);
+                setIsOpen(false);
+              }}
+              className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+            >
+              {option}
+              {selected === option && (
+                <Check className="w-4 h-4 text-green-500" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
         </div>
 
         {/* Main content area */}
@@ -229,7 +297,11 @@ export default function DiscoverCreatorsPage() {
 // --------------------------------------------------
 function CreatorCard({ creator, activeTab }: { creator: any; activeTab: string }) {
   return (
-    <div className="
+  <div>
+
+    <Link href="/home/friends-profile" >
+    
+      <div className="
       bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden
       hover:border-zinc-600 transition-all group
     ">
@@ -313,6 +385,8 @@ function CreatorCard({ creator, activeTab }: { creator: any; activeTab: string }
         </div>
       </div>
     </div>
+    </Link>
+  </div>
   );
 }
 

@@ -1,16 +1,27 @@
 // src/components/dashboard/Header.tsx
 'use client';
 
-import { Search, Plus, ChevronDown, Bell, MessageCircle, User, BellOff, Trash2, FileText, PenSquare, Briefcase } from 'lucide-react';
+import { Search,  Newspaper, 
+ 
+  Settings, 
+  HelpCircle, 
+  LogOut , Plus, ChevronDown, Bell, MessageCircle, User, BellOff, Trash2, FileText, PenSquare, Briefcase } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+
 
 export default function Header({ userName }: { userName: string }) {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [isCreateMenuOpen, setIsCreateMenuOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const router = useRouter();
 
+  const handleNavigate = (path: string) => {
+    router.push(path);
+    setIsProfileMenuOpen(false);
+  };
   return (
     <header className="sticky top-0 z-20 bg-black/90 backdrop-blur-md border-b border-zinc-800">
       <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 py-3 sm:py-4">
@@ -94,17 +105,8 @@ export default function Header({ userName }: { userName: string }) {
                       <span>Create Brief</span>
                     </button>
           </Link>
-                    
-                    <button 
-                      className="w-full flex items-center gap-3 px-4 py-3 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
-                      onClick={() => {
-                        console.log('Submit to Brief');
-                        setIsCreateMenuOpen(false);
-                      }}
-                    >
-                      <Briefcase className="w-4 h-4" />
-                      <span>Submit to Brief</span>
-                    </button>
+
+           
                   </div>
                 </div>
               </>
@@ -248,20 +250,68 @@ export default function Header({ userName }: { userName: string }) {
                   </div>
                   
                   {/* Menu items */}
-                  <div className="py-2">
-                    <button 
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
-                      onClick={() => {
-                        console.log('View profile');
-                        setIsProfileMenuOpen(false);
-                      }}
-                    >
-                      <User className="w-4 h-4" />
-                      <span>View Profile</span>
-                    </button>
-  
-              
-                  </div>
+           <div className="py-2">
+
+      {/* View Profile */}
+      <button
+        onClick={() => handleNavigate("/home/profile")}
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+      >
+        <User className="w-4 h-4" />
+        <span>View Profile</span>
+      </button>
+
+      {/* View Feed */}
+      <button
+        onClick={() => handleNavigate("/home/feed")}
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+      >
+        <Newspaper className="w-4 h-4" />
+        <span>View Feed</span>
+      </button>
+
+      {/* My Submissions */}
+      <button
+        onClick={() => handleNavigate("/home/briefs/my-submissions")}
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+      >
+        <FileText className="w-4 h-4" />
+        <span>My Submissions</span>
+      </button>
+
+      {/* Divider */}
+      <div className="my-2 border-t border-zinc-700"></div>
+
+      {/* Settings */}
+      <button
+        onClick={() => handleNavigate("/home/settings")}
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+      >
+        <Settings className="w-4 h-4" />
+        <span>Settings</span>
+      </button>
+
+      {/* Help & Support */}
+      <button
+        onClick={() => handleNavigate("/home/help-support")}
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+      >
+        <HelpCircle className="w-4 h-4" />
+        <span>Help & Support</span>
+      </button>
+
+      {/* Logout */}
+      <button
+        onClick={() => {
+          handleNavigate("/auth/sign-in")
+        }}
+        className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-zinc-800 transition-colors"
+      >
+        <LogOut className="w-4 h-4" />
+        <span>Log out</span>
+      </button>
+
+    </div>
                 </div>
               </>
             )}

@@ -1,14 +1,27 @@
-// app/audition/page.tsx
+"use client";
+
 import { Upload, Music, FileText, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function RnbVocalistSubmission() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <div className="max-w-5xl mx-auto px-4 py-10 md:py-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold">Looking for R&B Vocalist</h1>
+         <button
+      onClick={() => router.back()}
+      className="text-sm text-rose-500 hover:text-rose-400 transition"
+    >
+      <span className="text-base md:text-base font-bold">
+        Back
+      </span>
+    </button>
+          
+            <h1 className="text-3xl md:text-4xl font-bold"> Looking for R&B Vocalist</h1>
             <div className="flex items-center gap-3 mt-2">
               <span className="text-zinc-400">Atlantic Records</span>
               <span className="text-xs bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-full">

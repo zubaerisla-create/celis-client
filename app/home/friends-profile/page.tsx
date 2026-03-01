@@ -2,9 +2,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { Mail, Link as LinkIcon, MapPin, Calendar, Share2, MessageCircle, UserPlus, FlagIcon } from "lucide-react";
+import { Mail, Link as LinkIcon, MapPin, Calendar, Share2, MessageCircle, UserPlus, FlagIcon, Flag } from "lucide-react";
 import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown, Check } from "lucide-react";
 
 // ────────────────────────────────────────────────
 // Mock data — replace with real data fetching later
@@ -51,6 +52,7 @@ const briefs = [
     with: "with Atlantic Records",
     paid: "$2,000 – $5,000",
     timeLeft: "5 days left",
+    paidStatus: "Paid",
     submissions: 23,
     gradient: "from-red-950/80",
   },
@@ -59,6 +61,7 @@ const briefs = [
     with: "with Sony Music",
     paid: "$5,000",
     timeLeft: "3 days left",
+    paidStatus:"Revenue Share",
     submissions: 49,
   },
   // ...
@@ -89,6 +92,31 @@ const activity = [
 // ────────────────────────────────────────────────
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<"posts" | "briefs" | "about" | "activity">("posts");
+  
+  // Moved hooks inside the component
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("Flag");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const options = [
+   "Block",
+   "Report"
+  ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
@@ -107,94 +135,134 @@ export default function ProfilePage() {
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
         {/* Profile header card */}
-        <div className="bg-gradient-to-b from-gray-900/90 to-black border border-gray-800 rounded-xl overflow-hidden shadow-2xl backdrop-blur-sm">
-          <div className="p-6 md:p-8">
-            <div className="flex flex-col md:flex-row md:items-end gap-6">
-              {/* Avatar */}
-              <div className="relative -mt-16 md:-mt-24">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-black overflow-hidden">
-                  <Image src={profile.avatar} alt={profile.name} fill className="object-cover" />
-                </div>
-                {profile.launch && (
-                  <div className="absolute -bottom-2 -right-2 bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full border-2 border-black">
-                    Launch
-                  </div>
-                )}
-              </div>
-
-              {/* Info */}
-              <div className="flex-1">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div>
-                    <h1 className="text-3xl font-bold">{profile.name}</h1>
-                    <p className="text-gray-400 mt-1">{profile.role}</p>
-                  </div>
-
-                  <div className="flex gap-3 flex-wrap">
-                    <button className="bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-full font-medium flex items-center gap-2 transition">
-                      <UserPlus size={18} /> Connect
-                    </button>
-         <Link href="/home/message">
-         
-                    <button className="bg-gray-800 hover:bg-gray-700 px-5 py-2.5 rounded-full font-medium flex items-center gap-2 transition">
-                      <MessageCircle size={18} /> Message
-                    </button>
-         </Link>
-                    <button className="bg-gray-800 hover:bg-gray-700 p-2.5 rounded-full transition">
-                      <Share2 size={18} />
-                    </button>
-                    <button className="bg-gray-800 hover:bg-gray-700 p-2.5 rounded-full transition">
-                      <FlagIcon size={18} />
-                    </button>
-
-                  </div>
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-400">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin size={16} /> {profile.location}
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Calendar size={16} /> {profile.joined}
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <LinkIcon size={16} />
-                    <a href={`https://${profile.website}`} className="hover:text-blue-400">
-                      {profile.website}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
-              {Object.entries(profile.stats).map(([key, value]) => (
-                <div key={key} className="bg-black/40 border border-gray-800 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold">{value}</div>
-                  <div className="text-gray-500 text-sm capitalize">{key}</div>
-                </div>
-              ))}
+        <div className="flex flex-col md:flex-row md:items-end gap-6">
+          {/* Avatar */}
+          <div className="relative -mt-20">
+            <div className="w-36 h-36 rounded-full border-4 border-black overflow-hidden relative">
+              <Image
+                src={profile.avatar}
+                alt={profile.name}
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
-          {/* Tabs */}
-          <div className="border-t border-gray-800">
-            <div className="flex overflow-x-auto">
-              {(["posts", "briefs", "about", "activity"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex-1 min-w-[100px] py-4 px-6 text-center font-medium border-b-2 transition-colors ${
-                    activeTab === tab
-                      ? "border-red-600 text-white"
-                      : "border-transparent text-gray-400 hover:text-gray-300"
-                  }`}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          {/* Info */}
+          <div className="flex-1">
+            <div className="flex justify-between items-center flex-wrap gap-4">
+              <div>
+                <h1 className="text-3xl font-bold">{profile.name}</h1>
+                <p className="text-gray-400 mt-1">{profile.role}</p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 items-center">
+                <button className="bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-full flex items-center gap-2 transition">
+                  <UserPlus size={18} />
+                  Connect
                 </button>
-              ))}
+
+                <Link href="/home/message">
+                  <button className="bg-gray-800 hover:bg-gray-700 px-5 py-2.5 rounded-full flex items-center gap-2 transition">
+                    <MessageCircle size={18} />
+                    Message
+                  </button>
+                </Link>
+
+                <button className="bg-gray-800 hover:bg-gray-700 p-2.5 rounded-full transition">
+                  <Share2 size={18} />
+                </button>
+
+                {/* Dropdown */}
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="bg-gray-800 hover:bg-gray-700 p-2.5 rounded-full transition flex items-center gap-1"
+                  >
+                    <Flag size={18} />
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {isOpen && (
+                    <div className="absolute right-0 mt-2 w-40 bg-zinc-900 border border-zinc-700 rounded-xl shadow-lg z-50 overflow-hidden">
+                      {options.map((option) => (
+                        <button
+                          key={option}
+                          onClick={() => {
+                            setSelected(option);
+                            setIsOpen(false);
+                          }}
+                          className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+                        >
+                          {option}
+                          {selected === option && (
+                            <Check className="w-4 h-4 text-green-500 shrink-0" />
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
+
+            {/* Info Row */}
+            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-400">
+              <div className="flex items-center gap-1.5">
+                <MapPin size={16} />
+                {profile.location}
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Calendar size={16} />
+                {profile.joined}
+              </div>
+              <div className="flex items-center gap-1.5">
+                <LinkIcon size={16} />
+                <a
+                  href={`https://${profile.website}`}
+                  className="hover:text-blue-400"
+                >
+                  {profile.website}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
+          {Object.entries(profile.stats).map(([key, value]) => (
+            <div
+              key={key}
+              className="bg-black/40 border border-gray-800 rounded-lg p-4 text-center"
+            >
+              <div className="text-2xl font-bold">{value}</div>
+              <div className="text-gray-500 text-sm capitalize">{key}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tabs */}
+        <div className="border-t border-gray-800 mt-8">
+          <div className="flex overflow-x-auto">
+            {(["posts", "briefs", "about", "activity"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`flex-1 min-w-[100px] py-4 px-6 text-center font-medium border-b-2 transition-colors ${
+                  activeTab === tab
+                    ? "border-red-600 text-white"
+                    : "border-transparent text-gray-400 hover:text-gray-300"
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -248,8 +316,10 @@ export default function ProfilePage() {
                     </button>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
+                   <span className="bg-red-600 p-1 pl-4 pr-4 rounded-full" >{brief.paidStatus}</span>
                     {brief.paid && <span className="font-medium text-green-400">{brief.paid}</span>}
                     <span>{brief.timeLeft}</span>
+                    
                     <span>{brief.submissions} submissions</span>
                   </div>
                 </div>

@@ -103,10 +103,12 @@ export default function CreateIndustryBriefPage() {
                 </label>
                 <select className="w-full bg-zinc-950 border border-zinc-700 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-500">
                   <option value="">Select type</option>
-                  <option>Record Label</option>
+                  <option>Major Label</option>
+                  <option>Independent Label</option>
                   <option>Production Company</option>
-                  <option>Artist / Band</option>
-                  <option>Management</option>
+                  <option>Talent Agency</option>
+                  <option>Artist Management</option>
+                  <option>Independent Artist</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -194,10 +196,11 @@ export default function CreateIndustryBriefPage() {
                     Brief Type <span className="text-rose-500">*</span>
                   </label>
                   <select className="w-full bg-zinc-950 border border-zinc-700 rounded-lg px-4 py-2.5 text-sm">
-                    <option>Select type</option>
-                    <option>Paid Session</option>
-                    <option>Royalty Split</option>
-                    <option> spec / Demo</option>
+                 
+                    <option>Paid</option>
+                       <option>Revenue Share</option>
+                    <option>Collaboration</option>
+                    <option>  Exposure </option>
                     <option>Other</option>
                   </select>
                 </div>

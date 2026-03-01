@@ -113,9 +113,7 @@ export default function ProfilePage() {
               <button className="bg-zinc-800 hover:bg-zinc-700 px-5 py-2.5 rounded-lg border border-zinc-700 flex items-center gap-2 text-sm font-medium">
                 <Share2 size={16} /> Share
               </button>
-              <button className="bg-rose-600 hover:bg-rose-700 px-6 py-2.5 rounded-lg font-medium flex items-center gap-2">
-                <MessageCircle size={16} /> Message
-              </button>
+            
             </div>
           </div>
         </div>
@@ -193,7 +191,7 @@ export default function ProfilePage() {
           )}
 
           {/* BRIEFS */}
-  <Link href="/home/profile/brief-details" >
+
    
           {activeTab === "briefs" && (
             <div className="space-y-5">
@@ -240,15 +238,17 @@ export default function ProfilePage() {
                     </div>
                   </div>
                 
+                 <Link href="/home/profile/profile-brief-details" > 
                   <button className="bg-zinc-800 hover:bg-zinc-700 px-6 py-2.5 rounded-lg border border-zinc-700 whitespace-nowrap">
                     View
                   </button>
+                 </Link>
              
                 </div>
               ))}
             </div>
           )}
-   </Link>
+
 
           {/* PROJECTS */}
           {activeTab === "projects" && (
@@ -279,6 +279,7 @@ export default function ProfilePage() {
                         >
                           {proj.status}
                         </span>
+                        <span className="text-white-100 text-10px] pl-4" >{proj.daysAgo} days ago</span>
                       </div>
                     </div>
                   </div>
@@ -309,9 +310,12 @@ export default function ProfilePage() {
                     </div>
                   </div>
 
-                  <button className="w-full bg-zinc-800 hover:bg-zinc-700 py-2.5 rounded-lg border border-zinc-700 text-sm font-medium">
-                    Open Project
-                  </button>
+               <Link href="/home/projects/open-project" >
+             
+                <button className="w-full bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-600 text-white font-medium py-2.5 rounded-lg border border-zinc-700 transition-colors">
+                  Open Project
+                </button>
+             </Link>
                 </div>
               ))}
             </div>

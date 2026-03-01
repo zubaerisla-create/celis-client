@@ -2,8 +2,9 @@
 "use client";
 
 import { useState } from "react";
-import { FileText, CheckCircle2, XCircle, Calendar, Mail } from "lucide-react";
+import { FileText, CheckCircle2, XCircle, Calendar, Mail, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type SubmissionStatus = "Under Review" | "Shortlisted" | "Selected" | "Not Selected";
 
@@ -82,11 +83,17 @@ export default function YourSubmissionsPage() {
     selected: 1,
   };
 
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pb-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Header */}
         <div className="mb-8">
+             <button className="text-zinc-400 hover:text-white">
+              
+                <ArrowLeft onClick={()=>router.back()} size={20} />
+              </button>
           <h1 className="text-3xl font-bold">Your Submissions</h1>
           <p className="text-zinc-400 mt-1">
             Track your brief applications and their status

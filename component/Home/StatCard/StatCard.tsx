@@ -1,9 +1,11 @@
+import { ReactNode } from 'react';
+
 interface StatCardProps {
   title: string;
   value: string;
   change?: string;
   trend?: 'up' | 'down';
-  icon?: string;
+  icon?: ReactNode; // Changed from 'string' to 'ReactNode'
 }
 
 export default function StatCard({ title, value, change, trend, icon }: StatCardProps) {
