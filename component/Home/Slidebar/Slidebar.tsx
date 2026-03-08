@@ -14,6 +14,10 @@ import {
   User,
   Settings
 } from 'lucide-react';
+import Image from 'next/image';
+import logo from "../../../public/logo.png"
+
+
 
 const navItems = [
   { name: 'Home', href: '/home', icon: Home },
@@ -38,12 +42,15 @@ export default function Sidebar() {
       "
     >
       <div className="p-5 sm:p-6">
-        <div className="flex items-center gap-2 mb-8 sm:mb-10">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 bg-red-600 rounded-lg flex items-center justify-center text-xl font-black">
-            S
+       <div className="flex items-center gap-2 pb-4">
+            <div className="w-8 h-8  rounded-lg flex items-center justify-center">
+              <Image height={40} width={40} src={logo} alt="Spartst Logo" />
+            </div>
+            <div>
+              <h2 className="text-red-700 font-semibold text-lg">SPARTST</h2>
+              <p className="text-gray-400 text-[10px] leading-tight">SPACE FOR ART</p>
+            </div>
           </div>
-          <span className="text-xl sm:text-2xl font-black tracking-tight">PARTST</span>
-        </div>
 
         <nav className="space-y-1">
           {navItems.map((item) => {
