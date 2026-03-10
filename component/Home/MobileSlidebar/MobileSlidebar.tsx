@@ -13,8 +13,13 @@ import {
   Briefcase, 
   Folder, 
   Store, 
-  Headphones 
+  Headphones,
+  User,
+  Settings
 } from 'lucide-react';
+
+import logo from "../../../public/logo.png"
+import Image from 'next/image';
 
 const navItems = [
   { name: 'Home', href: '/home', icon: Home },
@@ -61,10 +66,40 @@ export default function MobileSidebar() {
         <div className="p-6 flex-1">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center text-xl font-black">
-                S
+            <div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
+              {/* Logo Container with Light background for black logo */}
+              <div className="relative">
+                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
+                  <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
+                    <Image
+                      height={28} 
+                      width={28} 
+                      src={logo} 
+                      alt="Spartst Logo"
+                      className="object-contain"
+                      style={{ 
+                        filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
+                      }}
+                    />
+                  </div>
+                </div>
+            
+               
               </div>
-              <span className="text-2xl font-black tracking-tight">PARTST</span>
+            
+              {/* Text Section */}
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
+                
+                </div>
+                <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+            
+                  SPACE FOR ART
+                </p>
+              </div>
+            </div>
+           
             </div>
             <button 
               onClick={() => setIsOpen(false)}
@@ -110,10 +145,40 @@ export default function MobileSidebar() {
 
           <div className="bg-zinc-900 p-4 rounded-xl">
             <p className="text-sm font-medium mb-2">Ignite Plan</p>
-            <button className="w-full py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition">
-              Upgrade Now
-            </button>
+            <Link href="/home/subscription-plan">
+              <button className="w-full py-2.5 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition">
+                Upgrade Now
+              </button>
+            </Link>
           </div>
+
+          {/* Profile link styled like navigation items */}
+          <Link
+            href="/home/profile"
+            onClick={() => setIsOpen(false)}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors mt-4 ${
+              pathname === '/home/profile'
+                ? 'bg-zinc-800 text-white'
+                : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+            }`}
+          >
+            <User className="w-5 h-5 flex-shrink-0" />
+            <span>Profile</span>
+          </Link>
+
+          {/* Settings link styled like navigation items */}
+          <Link
+            href="/home/settings"
+            onClick={() => setIsOpen(false)}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+              pathname === '/home/settings'
+                ? 'bg-zinc-800 text-white'
+                : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+            }`}
+          >
+            <Settings className="w-5 h-5 flex-shrink-0" />
+            <span>Settings</span>
+          </Link>
         </div>
       </div>
     </>

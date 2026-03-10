@@ -1,6 +1,8 @@
 // app/signup/page.tsx  (আপডেটেড ভার্সন)
 
+import Image from 'next/image';
 import Link from 'next/link';
+import logo from "../../../public/logo.png"
 
 export default function SignUp() {
   return (
@@ -17,12 +19,39 @@ export default function SignUp() {
         </div>
 
         {/* Logo */}
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center text-xl font-black">
-            S
-          </div>
-          <span className="text-2xl font-black">PARTST</span>
-        </div>
+    <div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
+  {/* Logo Container with Light background for black logo */}
+  <div className="relative">
+    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
+      <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
+        <Image
+          height={28} 
+          width={28} 
+          src={logo} 
+          alt="Spartst Logo"
+          className="object-contain"
+          style={{ 
+            filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
+          }}
+        />
+      </div>
+    </div>
+
+   
+  </div>
+
+  {/* Text Section */}
+  <div>
+    <div className="flex items-center gap-2">
+      <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
+    
+    </div>
+    <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+
+      SPACE FOR ART
+    </p>
+  </div>
+</div>
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-black mb-2">

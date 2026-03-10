@@ -27,6 +27,8 @@ import {
   ChevronRight
 } from "lucide-react";
 
+import logo from "../../public/logo.png"
+
 export default function LandingPage() {
   // Animation variants
   const fadeInUp = {
@@ -50,7 +52,7 @@ export default function LandingPage() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800"
+        className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md  border-b border-zinc-800"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 flex items-center justify-between">
        
@@ -59,9 +61,39 @@ export default function LandingPage() {
               className="flex items-center gap-1 sm:gap-2"
             >
               <a href="#" className="flex items-center gap-1 sm:gap-2">
-                <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">
-                <span className="text-red-600">S</span>PARTST
-              </span>
+             <div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
+               {/* Logo Container with Light background for black logo */}
+               <div className="relative">
+                 <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
+                   <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
+                     <Image 
+                       height={28} 
+                       width={28} 
+                       src={logo} 
+                       alt="Spartst Logo"
+                       className="object-contain"
+                       style={{ 
+                         filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
+                       }}
+                     />
+                   </div>
+                 </div>
+             
+                
+               </div>
+             
+               {/* Text Section */}
+               <div>
+                 <div className="flex items-center gap-2">
+                   <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
+                 
+                 </div>
+                 <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+             
+                   SPACE FOR ART
+                 </p>
+               </div>
+             </div>
               </a>
             </motion.div>
   
@@ -103,20 +135,20 @@ export default function LandingPage() {
       </motion.header>
 
       {/* Hero Section */}
-      <main className="pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-32 relative overflow-hidden">
+      <main className="pt-24 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-4  relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial="initial"
             animate="animate"
             variants={staggerContainer}
-            className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12"
+            className="flex flex-col lg:flex-row items-center  gap-6 sm:gap-8 lg:gap-12"
           >
             {/* Left Content */}
-            <div className="flex-1 text-center lg:text-left w-full">
+            <div className="flex-1 text-center pt-8 lg:text-left w-full">
               {/* Small tagline */}
               <motion.div 
                 variants={fadeInUp}
-                className="inline-block mb-3 sm:mb-4 md:mb-6 px-3 sm:px-5 py-1.5 sm:py-2 bg-zinc-900/70 border border-zinc-700 rounded-full text-xs sm:text-sm font-medium tracking-wide text-red-300"
+                className="inline-block mb-3 sm:mb-4 md:mb-6 px-3 sm:px-5  py-1.5 sm:py-2 bg-zinc-900/70 border border-zinc-700 rounded-full text-xs sm:text-sm font-medium tracking-wide text-red-300"
               >
                 The Professional Network for Music Creators
               </motion.div>
@@ -572,9 +604,39 @@ export default function LandingPage() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-1 sm:gap-2 mb-1 xs:mb-1.5 sm:mb-2 md:mb-3 lg:mb-4"
             >
-              <span className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-black">
-                <span className="text-red-600">S</span>PARTST
-              </span>
+             <div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
+               {/* Logo Container with Light background for black logo */}
+               <div className="relative">
+                 <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
+                   <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
+                     <Image 
+                       height={28} 
+                       width={28} 
+                       src={logo} 
+                       alt="Spartst Logo"
+                       className="object-contain"
+                       style={{ 
+                         filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
+                       }}
+                     />
+                   </div>
+                 </div>
+             
+                
+               </div>
+             
+               {/* Text Section */}
+               <div>
+                 <div className="flex items-center gap-2">
+                   <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
+                 
+                 </div>
+                 <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+             
+                   SPACE FOR ART
+                 </p>
+               </div>
+             </div>
             </motion.div>
             <p className="leading-relaxed text-[10px] xs:text-xs flex items-center gap-1">
               <Globe className="w-3 h-3 inline-block" />

@@ -17,8 +17,6 @@ import {
 import Image from 'next/image';
 import logo from "../../../public/logo.png"
 
-
-
 const navItems = [
   { name: 'Home', href: '/home', icon: Home },
   { name: 'Discover', href: '/home/discover', icon: Compass },
@@ -42,15 +40,39 @@ export default function Sidebar() {
       "
     >
       <div className="p-5 sm:p-6">
-       <div className="flex items-center gap-2 pb-4">
-            <div className="w-8 h-8  rounded-lg flex items-center justify-center">
-              <Image height={40} width={40} src={logo} alt="Spartst Logo" />
-            </div>
-            <div>
-              <h2 className="text-red-700 font-semibold text-lg">SPARTST</h2>
-              <p className="text-gray-400 text-[10px] leading-tight">SPACE FOR ART</p>
-            </div>
-          </div>
+<div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
+  {/* Logo Container with Light background for black logo */}
+  <div className="relative">
+    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
+      <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
+        <Image 
+          height={28} 
+          width={28} 
+          src={logo} 
+          alt="Spartst Logo"
+          className="object-contain"
+          style={{ 
+            filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
+          }}
+        />
+      </div>
+    </div>
+
+   
+  </div>
+
+  {/* Text Section */}
+  <div>
+    <div className="flex items-center gap-2">
+      <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
+    
+    </div>
+    <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+
+      SPACE FOR ART
+    </p>
+  </div>
+</div>
 
         <nav className="space-y-1">
           {navItems.map((item) => {

@@ -5,6 +5,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import logo from "../../../../public/logo.png"
 
 const roles = [
   {
@@ -66,12 +68,39 @@ export default function SelectRole() {
     <div className="min-h-screen bg-black text-white flex flex-col">
       {/* Header / Logo */}
       <div className="p-6 md:p-10">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-2xl font-black">
-            S
-          </div>
-          <span className="text-3xl font-black tracking-tight">PARTST</span>
-        </div>
+      <div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
+  {/* Logo Container with Light background for black logo */}
+  <div className="relative">
+    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
+      <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
+        <Image 
+          height={28} 
+          width={28} 
+          src={logo} 
+          alt="Spartst Logo"
+          className="object-contain"
+          style={{ 
+            filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
+          }}
+        />
+      </div>
+    </div>
+
+   
+  </div>
+
+  {/* Text Section */}
+  <div>
+    <div className="flex items-center gap-2">
+      <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
+    
+    </div>
+    <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+
+      SPACE FOR ART
+    </p>
+  </div>
+</div>
       </div>
 
       {/* Main Content */}
