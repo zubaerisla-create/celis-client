@@ -105,7 +105,7 @@ export default function Marketplace() {
                 Buy and sell music, beats, and creative assets
               </p>
             </div>
-            <Link href="/home/marketplace/upload-assets" className="w-full sm:w-auto">
+            <Link href="/home/marketplace/purchase-license" className="w-full sm:w-auto">
               <button className="w-full sm:w-auto bg-red-600 hover:bg-red-700 px-4 sm:px-5 py-2.5 rounded-lg font-medium flex items-center justify-center gap-2 transition whitespace-nowrap text-sm sm:text-base">
                 <Upload size={18} /> 
                 <span className="sm:inline">Upload Asset</span>
