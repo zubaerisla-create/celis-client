@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // src/components/dashboard/UpgradeBanner.tsx
 interface UpgradeBannerProps {
   gradientFrom?: string;
@@ -35,11 +37,13 @@ export default function UpgradeBanner({
         </li>
       </ul>
 
+    <Link href="/home/subscription-plan">
       <button 
         className="w-full py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg sm:rounded-xl font-semibold text-white text-xs sm:text-sm transition-all shadow-lg shadow-[#831CDF]/40 active:scale-[0.98]"
       >
         Upgrade Now
       </button>
+    </Link>
 
       <p className="text-[10px] sm:text-xs text-zinc-500 mt-3 sm:mt-4 text-center">
         Unlock more features and grow faster

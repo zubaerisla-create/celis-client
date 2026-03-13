@@ -4,6 +4,7 @@ import StatCard from "@/component/Home/StatCard/StatCard";
 import UpgradeBanner from "@/component/Home/UpgradeBanner/UpgradeBanner";
 import UserCard from "@/component/Home/UseCard/UseCard";
 import { Eye, Users, Briefcase, Music } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const getIcon = (iconName: string) => {
@@ -75,6 +76,8 @@ export default function Home() {
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+        
+        <Link href="/home/friends-profile">
               <UserCard
                 name="Sarah Chen"
                 role="Producer"
@@ -83,6 +86,11 @@ export default function Home() {
                 plan="Launch"
                 imageBg="from-[#E54FA9] to-[#831CDF]"
               />
+        </Link>
+
+
+           <Link href="/home/friends-profile">
+           
               <UserCard
                 name="Marcus Williams"
                 role="Songwriter"
@@ -91,6 +99,7 @@ export default function Home() {
                 plan="Excel"
                 imageBg="from-[#831CDF] to-[#E54FA9]"
               />
+           </Link>
             </div>
           </section>
 
@@ -103,6 +112,7 @@ export default function Home() {
               </button>
             </div>
             <div className="space-y-3 sm:space-y-4">
+       <Link href="/home/briefs/brief-details">
               <BriefCard 
                 title="Looking for R&B Vocalist" 
                 client="Atlantic Records" 
@@ -111,7 +121,10 @@ export default function Home() {
                 gradientFrom="#E54FA9" 
                 gradientTo="#831CDF"
               />
-              <BriefCard 
+       </Link>
+       
+<Link href="/home/briefs/brief-details">
+       <BriefCard 
                 title="Hip-Hop Beat Production" 
                 client="Indie Label Group" 
                 genre="Hip-Hop" 
@@ -119,6 +132,9 @@ export default function Home() {
                 gradientFrom="#E54FA9" 
                 gradientTo="#831CDF" 
               />
+</Link>
+
+   <Link href="/home/briefs/brief-details">
               <BriefCard 
                 title="Summer Pop Track" 
                 client="Sony Music" 
@@ -127,6 +143,7 @@ export default function Home() {
                 gradientFrom="#E54FA9" 
                 gradientTo="#831CDF" 
               />
+   </Link>
             </div>
           </section>
 
@@ -139,6 +156,7 @@ export default function Home() {
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+    <Link href="/home/projects/open-project">
               <ProjectCard 
                 title="Midnight Sessions" 
                 artist="Sarah Chen & Alex Rivera" 
@@ -147,6 +165,9 @@ export default function Home() {
                 gradientFrom="#E54FA9" 
                 gradientTo="#831CDF"
               />
+    </Link>
+<Link href="/home/projects/open-project">
+
               <ProjectCard 
                 title="Summer Vibes EP" 
                 artist="Marcus Williams" 
@@ -155,6 +176,7 @@ export default function Home() {
                 gradientFrom="#E54FA9" 
                 gradientTo="#831CDF" 
               />
+</Link>
             </div>
           </section>
         </div>
@@ -210,11 +232,13 @@ export default function Home() {
                 />
               </div>
             </div>
+     <Link href="/home/settings">
             <button 
               className="w-full py-2 sm:py-2.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg text-xs sm:text-sm font-medium transition-all"
             >
               Complete Profile
             </button>
+     </Link>
           </section>
         </aside>
       </div>

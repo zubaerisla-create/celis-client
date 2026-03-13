@@ -90,11 +90,18 @@ export default function YourSubmissionsPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         {/* Header */}
         <div className="mb-8">
-             <button className="text-zinc-400 hover:text-white">
-              
-                <ArrowLeft onClick={()=>router.back()} size={20} />
-              </button>
-          <h1 className="text-3xl font-bold">Your Submissions</h1>
+          <button 
+            onClick={()=>router.back()} 
+            className="text-zinc-400 hover:text-[#E54FA9] transition-colors mb-2 group"
+          >
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+          </button>
+          <h1 className="text-3xl font-bold">
+            <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+              Your
+            </span>{' '}
+            Submissions
+          </h1>
           <p className="text-zinc-400 mt-1">
             Track your brief applications and their status
           </p>
@@ -102,21 +109,21 @@ export default function YourSubmissionsPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
-            <div className="text-3xl font-bold">{stats.total}</div>
-            <div className="text-sm text-zinc-400 mt-1">Total Submissions</div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-[#E54FA9]/50 transition-all group">
+            <div className="text-3xl font-bold text-[#E54FA9]">{stats.total}</div>
+            <div className="text-sm text-zinc-400 mt-1 group-hover:text-[#E54FA9] transition-colors">Total Submissions</div>
           </div>
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
-            <div className="text-3xl font-bold">{stats.underReview}</div>
-            <div className="text-sm text-zinc-400 mt-1">Under Review</div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-[#E54FA9]/50 transition-all group">
+            <div className="text-3xl font-bold text-[#E54FA9]">{stats.underReview}</div>
+            <div className="text-sm text-zinc-400 mt-1 group-hover:text-[#E54FA9] transition-colors">Under Review</div>
           </div>
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
-            <div className="text-3xl font-bold">{stats.shortlisted}</div>
-            <div className="text-sm text-zinc-400 mt-1">Shortlisted</div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-[#E54FA9]/50 transition-all group">
+            <div className="text-3xl font-bold text-[#E54FA9]">{stats.shortlisted}</div>
+            <div className="text-sm text-zinc-400 mt-1 group-hover:text-[#E54FA9] transition-colors">Shortlisted</div>
           </div>
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
-            <div className="text-3xl font-bold">{stats.selected}</div>
-            <div className="text-sm text-zinc-400 mt-1">Selected</div>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center hover:border-[#E54FA9]/50 transition-all group">
+            <div className="text-3xl font-bold text-[#E54FA9]">{stats.selected}</div>
+            <div className="text-sm text-zinc-400 mt-1 group-hover:text-[#E54FA9] transition-colors">Selected</div>
           </div>
         </div>
 
@@ -126,8 +133,8 @@ export default function YourSubmissionsPage() {
             onClick={() => setActiveTab("Active")}
             className={`px-6 py-3 font-medium transition-colors ${
               activeTab === "Active"
-                ? "border-b-2 border-rose-500 text-rose-400"
-                : "text-zinc-400 hover:text-zinc-300"
+                ? "border-b-2 border-[#E54FA9] text-[#E54FA9]"
+                : "text-zinc-400 hover:text-zinc-300 hover:border-b-2 hover:border-[#E54FA9]/50"
             }`}
           >
             Active ({mockSubmissions.filter((s) => s.isActive).length})
@@ -136,8 +143,8 @@ export default function YourSubmissionsPage() {
             onClick={() => setActiveTab("Completed")}
             className={`px-6 py-3 font-medium transition-colors ${
               activeTab === "Completed"
-                ? "border-b-2 border-rose-500 text-rose-400"
-                : "text-zinc-400 hover:text-zinc-300"
+                ? "border-b-2 border-[#E54FA9] text-[#E54FA9]"
+                : "text-zinc-400 hover:text-zinc-300 hover:border-b-2 hover:border-[#E54FA9]/50"
             }`}
           >
             Completed ({mockSubmissions.filter((s) => !s.isActive).length})
@@ -154,62 +161,62 @@ export default function YourSubmissionsPage() {
             filteredSubmissions.map((submission) => (
               <div
                 key={submission.id}
-                className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 transition-colors"
+                className="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-[#E54FA9]/50 transition-all group"
               >
                 {/* Header row */}
                 <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-zinc-800">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-rose-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
-                      <FileText className="text-rose-400" size={20} />
+                    <div className="w-10 h-10 bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 rounded-lg flex items-center justify-center">
+                      <FileText className="text-[#E54FA9]" size={20} />
                     </div>
                     <div>
-                      <h3 className="font-semibold">{submission.title}</h3>
-                      <p className="text-sm text-zinc-400">{submission.company}</p>
+                      <h3 className="font-semibold group-hover:text-[#E54FA9] transition-colors">{submission.title}</h3>
+                      <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">{submission.company}</p>
                     </div>
                   </div>
                 
-                <Link href="/home/briefs/brief-details" >
-                
-                  <button className="text-sm bg-zinc-800 hover:bg-zinc-700 px-4 py-1.5 rounded-lg border border-zinc-700 transition-colors">
-                    View Brief
-                  </button>
-                </Link>
-
+                  <Link href="/home/briefs/brief-details">
+                    <button className="text-sm bg-zinc-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] px-4 py-1.5 rounded-lg border border-zinc-700 transition-all group/btn">
+                      <span className="group-hover/btn:text-white">View Brief</span>
+                    </button>
+                  </Link>
                 </div>
 
                 {/* Status badge */}
                 <div className="px-5 pt-4 pb-2">
                   {submission.status === "Selected" ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/60 text-emerald-400 border border-emerald-800/50 rounded-full text-sm font-medium">
-                      <CheckCircle2 size={16} />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 text-[#E54FA9] border border-[#E54FA9]/30 rounded-full text-sm font-medium">
+                      <CheckCircle2 size={16} className="text-[#E54FA9]" />
                       Selected
                     </span>
                   ) : submission.status === "Not Selected" ? (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-950/40 text-rose-400 border border-rose-900/50 rounded-full text-sm font-medium">
-                      <XCircle size={16} />
+                      <XCircle size={16} className="text-rose-400" />
                       Not Selected
                     </span>
                   ) : (
-                    <span className="text-sm text-zinc-400">{submission.status}</span>
+                    <span className="text-sm text-zinc-400 group-hover:text-[#E54FA9] transition-colors">
+                      {submission.status}
+                    </span>
                   )}
                 </div>
 
                 {/* Dates */}
                 <div className="px-5 py-3 flex flex-wrap gap-x-8 gap-y-2 text-sm text-zinc-400">
-                  <div>
-                    <span className="block text-xs text-zinc-500">Submitted</span>
-                    {submission.submitted}
+                  <div className="group/date">
+                    <span className="block text-xs text-zinc-500 group-hover/date:text-[#E54FA9] transition-colors">Submitted</span>
+                    <span className="group-hover:text-[#E54FA9] transition-colors">{submission.submitted}</span>
                   </div>
-                  <div>
-                    <span className="block text-xs text-zinc-500">Deadline</span>
-                    {submission.deadline}
+                  <div className="group/date">
+                    <span className="block text-xs text-zinc-500 group-hover/date:text-[#E54FA9] transition-colors">Deadline</span>
+                    <span className="group-hover:text-[#E54FA9] transition-colors">{submission.deadline}</span>
                   </div>
                 </div>
 
                 {/* Message banner (only for selected) */}
                 {submission.message && (
-                  <div className="mx-5 mb-5 mt-3 bg-emerald-950/40 border border-emerald-800/50 rounded-lg p-4 text-sm text-emerald-300 flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 flex-shrink-0" size={18} />
+                  <div className="mx-5 mb-5 mt-3 bg-gradient-to-r from-[#E54FA9]/10 to-[#831CDF]/10 border border-[#E54FA9]/30 rounded-lg p-4 text-sm text-[#E54FA9] flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 flex-shrink-0 text-[#E54FA9]" size={18} />
                     <div>{submission.message}</div>
                   </div>
                 )}
