@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from "../../../public/logo.png"
+import LogoContainer from '@/component/ReUsableComponent/LogoContainer/LogoContainer';
 
 export default function SignIn() {
   return (
@@ -11,50 +12,18 @@ export default function SignIn() {
       <div className="p-6 md:p-10">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm font-medium"
+          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm font-medium group"
         >
-          ← Back to home
+          <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to home
         </Link>
       </div>
 
       {/* Main content - centered */}
       <div className="flex-1 flex items-center justify-center px-6 pb-20">
+        {/* Logo - now properly sized without taking full width */}
         <div className="w-full max-w-md">
-          {/* Logo */}
-          <div className="flex items-center justify-center mb-10">
-             <div className="flex items-center gap-3 pb-6 border-b border-zinc-800">
-  {/* Logo Container with Light background for black logo */}
-  <div className="relative">
-    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-zinc-100 to-white flex items-center justify-center shadow-lg shadow-black/5 border border-zinc-200/50">
-      <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
-        <Image
-          height={28} 
-          width={28} 
-          src={logo} 
-          alt="Spartst Logo"
-          className="object-contain"
-          style={{ 
-            filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
-          }}
-        />
-      </div>
-    </div>
-
-   
-  </div>
-
-  {/* Text Section */}
-  <div>
-    <div className="flex items-center gap-2">
-      <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
-    
-    </div>
-    <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
-
-      SPACE FOR ART
-    </p>
-  </div>
-</div>
+          <div className="flex justify-center mb-8">
+            <LogoContainer/>
           </div>
 
           {/* Title */}
@@ -85,7 +54,7 @@ export default function SignIn() {
                   w-full px-5 py-4 
                   bg-zinc-900 border border-zinc-700 
                   rounded-xl text-white placeholder-zinc-500
-                  focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600
+                  focus:outline-none focus:border-[#E54FA9] focus:ring-1 focus:ring-[#E54FA9]
                   transition-all
                 "
                 defaultValue="you@example.com"
@@ -103,7 +72,7 @@ export default function SignIn() {
                 </label>
                 <Link
                   href="/auth/sign-in/reset-email"
-                  className="text-sm text-red-500 hover:text-red-400 transition-colors"
+                  className="text-sm bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent hover:from-[#D63F99] hover:to-[#730CCF] transition-colors font-medium"
                 >
                   Forgot password?
                 </Link>
@@ -116,7 +85,7 @@ export default function SignIn() {
                   w-full px-5 py-4 
                   bg-zinc-900 border border-zinc-700 
                   rounded-xl text-white placeholder-zinc-500
-                  focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600
+                  focus:outline-none focus:border-[#E54FA9] focus:ring-1 focus:ring-[#E54FA9]
                   transition-all
                 "
               />
@@ -127,7 +96,7 @@ export default function SignIn() {
               <input
                 type="checkbox"
                 id="remember"
-                className="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-red-600 focus:ring-red-600"
+                className="w-5 h-5 rounded border-zinc-700 bg-zinc-900 text-[#E54FA9] focus:ring-[#E54FA9] focus:ring-offset-0"
               />
               <label htmlFor="remember" className="text-sm text-zinc-300">
                 Remember me for 30 days
@@ -135,28 +104,28 @@ export default function SignIn() {
             </div>
 
             {/* Submit */}
-        <Link href="/home" >
-        
-            <button
-              type="submit"
-              className="
-                w-full py-4 px-6 
-                bg-red-600 hover:bg-red-700 
-                text-white font-bold text-lg
-                rounded-xl transition-all
-                shadow-lg shadow-red-900/30
-                active:scale-[0.98]
-              "
-            >
-              Log In
-            </button>
-        </Link>
+            <Link href="/home">
+              <button
+                type="submit"
+                className="
+                  w-full py-4 px-6 
+                  bg-gradient-to-r from-[#E54FA9] to-[#831CDF]
+                  hover:from-[#D63F99] hover:to-[#730CCF]
+                  text-white font-bold text-lg
+                  rounded-xl transition-all
+                  shadow-lg shadow-[#831CDF]/30
+                  active:scale-[0.98]
+                "
+              >
+                Log In
+              </button>
+            </Link>
           </form>
 
           {/* Sign up link */}
           <p className="text-center text-zinc-400 mt-8">
             Don&apos;t have an account?{' '}
-            <Link href="/auth/sign-up" className="text-red-500 hover:text-red-400 font-medium">
+            <Link href="/auth/sign-up" className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent hover:from-[#D63F99] hover:to-[#730CCF] font-medium">
               Sign up
             </Link>
           </p>
@@ -164,11 +133,11 @@ export default function SignIn() {
           {/* Footer text */}
           <p className="text-center text-zinc-600 text-sm mt-12">
             By logging in, you agree to our{' '}
-            <Link href="/terms" className="text-zinc-400 hover:text-zinc-300 underline">
+            <Link href="/terms" className="text-zinc-400 hover:text-zinc-300 underline underline-offset-2 hover:decoration-[#E54FA9]">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="text-zinc-400 hover:text-zinc-300 underline">
+            <Link href="/privacy" className="text-zinc-400 hover:text-zinc-300 underline underline-offset-2 hover:decoration-[#E54FA9]">
               Privacy Policy
             </Link>
           </p>

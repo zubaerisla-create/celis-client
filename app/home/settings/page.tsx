@@ -360,73 +360,126 @@ export default function SettingsPage() {
           {/* ────────────────────────────────────────
               SUBSCRIPTION TAB
           ──────────────────────────────────────── */}
-          {activeTab === "subscription" && (
-            <div className="space-y-3 xs:space-y-4 sm:space-y-6 lg:space-y-8">
-              <div className="bg-zinc-900 border border-zinc-800 rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-6">
-                <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 xs:gap-0 mb-3 xs:mb-4 sm:mb-6">
-                  <div>
-                    <h3 className="text-base xs:text-lg sm:text-xl font-semibold">Ignite Plan</h3>
-                    <span className="text-xs xs:text-sm text-emerald-400">Current Plan</span>
-                  </div>
-                  <Crown className="text-amber-400 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
-                </div>
+        {activeTab === "subscription" && (
+  <div className="space-y-3 xs:space-y-4 sm:space-y-6 lg:space-y-8">
+    {/* Current Plan - Ignite */}
+    <div className="bg-zinc-900 border border-zinc-800 rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-6 hover:border-[#E54FA9]/50 transition-all">
+      <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 xs:gap-0 mb-3 xs:mb-4 sm:mb-6">
+        <div>
+          <h3 className="text-base xs:text-lg sm:text-xl font-semibold bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Ignite Plan</h3>
+          <span className="text-xs xs:text-sm bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Current Plan</span>
+        </div>
+        <Crown className="text-amber-400 w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />
+      </div>
 
-                <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2 text-xs xs:text-sm text-zinc-300 mb-3 xs:mb-4 sm:mb-6">
-                  <li>• 10 GB storage</li>
-                  <li>• Basic portfolio features</li>
-                  <li>• Limited AI matching</li>
-                </ul>
+      <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2 text-xs xs:text-sm text-zinc-300 mb-3 xs:mb-4 sm:mb-6">
+        <li className="flex items-center gap-2">
+          <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+          10 GB storage
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+          Basic portfolio features
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+          Limited AI matching
+        </li>
+      </ul>
 
-                <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-2 xs:p-3 sm:p-4 mb-3 xs:mb-4 sm:mb-6">
-                  <div className="flex justify-between text-xs xs:text-sm mb-1 xs:mb-1.5 sm:mb-2">
-                    <span>Storage used</span>
-                    <span>4.5 GB / 10 GB</span>
-                  </div>
-                  <div className="h-1 xs:h-1.5 sm:h-2 bg-zinc-800 rounded-full">
-                    <div className="h-full w-[45%] bg-rose-600 rounded-full" />
-                  </div>
-                </div>
+      <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-2 xs:p-3 sm:p-4 mb-3 xs:mb-4 sm:mb-6">
+        <div className="flex justify-between text-xs xs:text-sm mb-1 xs:mb-1.5 sm:mb-2">
+          <span className="text-zinc-400">Storage used</span>
+          <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent font-medium">4.5 GB / 10 GB</span>
+        </div>
+        <div className="h-1 xs:h-1.5 sm:h-2 bg-zinc-800 rounded-full overflow-hidden">
+          <div 
+            className="h-full rounded-full transition-all duration-500"
+            style={{ 
+              width: '45%',
+              background: 'linear-gradient(to right, #E54FA9, #831CDF)'
+            }}
+          />
+        </div>
+      </div>
 
-                <button className="w-full bg-rose-600 hover:bg-rose-700 py-2 xs:py-2.5 sm:py-3 rounded-lg text-xs xs:text-sm sm:text-base font-medium">
-                  Upgrade to Launch
-                </button>
-              </div>
+      <button className="w-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] py-2 xs:py-2.5 sm:py-3 rounded-lg text-xs xs:text-sm sm:text-base font-medium shadow-lg shadow-[#831CDF]/30 active:scale-[0.98] transition-all">
+        Upgrade to Launch
+      </button>
+    </div>
 
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 xs:gap-4 sm:gap-6">
-                <div className="bg-zinc-900 border border-zinc-800 rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-6">
-                  <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 sm:mb-4">Launch</h3>
-                  <div className="text-lg xs:text-xl sm:text-2xl font-bold mb-0.5 xs:mb-1">$19<span className="text-xs xs:text-sm font-normal text-zinc-400">/month</span></div>
-                  <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2 text-xs xs:text-sm mt-2 xs:mt-3 sm:mt-5">
-                    <li>• 50 GB storage</li>
-                    <li>• Priority in discovery</li>
-                    <li>• Advanced analytics</li>
-                    <li>• Unlimited AI matching</li>
-                  </ul>
-                  <button className="w-full mt-3 xs:mt-4 sm:mt-6 bg-zinc-800 hover:bg-zinc-700 py-2 xs:py-2.5 sm:py-3 rounded-lg text-xs xs:text-sm sm:text-base border border-zinc-700">
-                    Select Plan
-                  </button>
-                </div>
+    {/* Plan Comparison */}
+    <div className="grid grid-cols-1 xs:grid-cols-2 gap-3 xs:gap-4 sm:gap-6">
+      {/* Launch Plan */}
+      <div className="bg-zinc-900 border border-zinc-800 rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-6 hover:border-[#E54FA9]/50 transition-all group">
+        <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 sm:mb-4 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Launch</h3>
+        <div className="text-lg xs:text-xl sm:text-2xl font-bold mb-0.5 xs:mb-1">
+          $19
+          <span className="text-xs xs:text-sm font-normal text-zinc-400">/month</span>
+        </div>
+        <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2 text-xs xs:text-sm mt-2 xs:mt-3 sm:mt-5">
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            50 GB storage
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Priority in discovery
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Advanced analytics
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Unlimited AI matching
+          </li>
+        </ul>
+        <button className="w-full mt-3 xs:mt-4 sm:mt-6 bg-zinc-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] border border-zinc-700 hover:border-transparent py-2 xs:py-2.5 sm:py-3 rounded-lg text-xs xs:text-sm sm:text-base transition-all hover:text-white hover:shadow-lg hover:shadow-[#831CDF]/30 active:scale-[0.98]">
+          Select Plan
+        </button>
+      </div>
 
-                <div className="bg-gradient-to-br from-rose-950/40 to-purple-950/30 border border-rose-900/50 rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-6 relative">
-                  <div className="absolute top-2 xs:top-3 sm:top-4 right-2 xs:right-3 sm:right-4 bg-rose-600 text-2xs xs:text-xs px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 rounded-full font-medium">
-                    Most Popular
-                  </div>
-                  <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 sm:mb-4">Excel</h3>
-                  <div className="text-lg xs:text-xl sm:text-2xl font-bold mb-0.5 xs:mb-1">$49<span className="text-xs xs:text-sm font-normal text-zinc-400">/month</span></div>
-                  <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2 text-xs xs:text-sm mt-2 xs:mt-3 sm:mt-5">
-                    <li>• 200 GB storage</li>
-                    <li>• Top priority placement</li>
-                    <li>• Premium analytics</li>
-                    <li>• Verified badge</li>
-                    <li>• Dedicated support</li>
-                  </ul>
-                  <button className="w-full mt-3 xs:mt-4 sm:mt-6 bg-rose-600 hover:bg-rose-700 py-2 xs:py-2.5 sm:py-3 rounded-lg text-xs xs:text-sm sm:text-base font-medium">
-                    Upgrade Now
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+      {/* Excel Plan - Most Popular */}
+      <div className="bg-gradient-to-br from-[#E54FA9]/10 to-[#831CDF]/10 border border-[#E54FA9]/30 rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-6 relative hover:border-[#E54FA9] transition-all group">
+        <div className="absolute -top-2 xs:-top-2.5 sm:-top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] text-white text-2xs xs:text-xs px-2 xs:px-2.5 sm:px-3 py-0.5 xs:py-1 rounded-full font-medium whitespace-nowrap shadow-lg shadow-[#831CDF]/30">
+          Most Popular
+        </div>
+        
+        <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 sm:mb-4 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Excel</h3>
+        <div className="text-lg xs:text-xl sm:text-2xl font-bold mb-0.5 xs:mb-1">
+          $49
+          <span className="text-xs xs:text-sm font-normal text-zinc-400">/month</span>
+        </div>
+        <ul className="space-y-1 xs:space-y-1.5 sm:space-y-2 text-xs xs:text-sm mt-2 xs:mt-3 sm:mt-5">
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            200 GB storage
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Top priority placement
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Premium analytics
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Verified badge
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="w-1 h-1 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF]" />
+            Dedicated support
+          </li>
+        </ul>
+        <button className="w-full mt-3 xs:mt-4 sm:mt-6 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] py-2 xs:py-2.5 sm:py-3 rounded-lg text-xs xs:text-sm sm:text-base font-medium shadow-lg shadow-[#831CDF]/30 active:scale-[0.98] transition-all">
+          Upgrade Now
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
           {/* ────────────────────────────────────────
               STORAGE TAB

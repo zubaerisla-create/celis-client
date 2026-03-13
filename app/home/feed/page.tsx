@@ -134,7 +134,6 @@ export default function NetworkFeed() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
       {/* Fixed Header Container */}
-   {/* Fixed Header Container */}
       <div className="fixed left-0 top-0 right-0 ">
         {/* Top bar - Shows by default, hides on scroll with blur effect */}
         <div className={`bg-black/90 backdrop-blur-md pt-5 border-b border-gray-800 transition-all duration-300 ${
@@ -160,18 +159,18 @@ export default function NetworkFeed() {
                       onClick={() => setActiveTab(tab.id as any)}
                       className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                         activeTab === tab.id
-                          ? "bg-gray-800 text-white"
+                          ? "bg-gradient-to-r from-[#E54FA9] to-[#831CDF] text-white"
                           : "text-gray-400 hover:text-gray-200 hover:bg-gray-900/50"
                       }`}
                     >
-                      {Icon && <Icon size={1} />}
+                      {Icon && <Icon size={16} />}
                       {tab.label}
                     </button>
                   );
                 })}
               </div>
               <Link href="/home/create-post">
-                <button className="bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 transition-colors whitespace-nowrap ml-2">
+                <button className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 transition-colors whitespace-nowrap ml-2">
                   <Plus size={18} /> Create Post
                 </button>
               </Link>
@@ -259,12 +258,12 @@ export default function NetworkFeed() {
                   <div className="px-4 pb-4">
                     <div className="bg-black/50 rounded-lg p-4">
                       <div className="flex items-center gap-3">
-                        <button className="bg-red-600 p-3 rounded-full">
+                        <button className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] p-3 rounded-full">
                           <Play size={20} fill="white" />
                         </button>
                         <div className="flex-1">
                           <div className="h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                            <div className="w-3/5 h-full bg-red-500 rounded-full" />
+                            <div className="w-3/5 h-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-full" />
                           </div>
                         </div>
                         <span className="text-sm text-gray-400">{post.audioDuration}</span>
@@ -282,7 +281,7 @@ export default function NetworkFeed() {
                       className="object-cover"
                     />
                     <button className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+                      <div className="w-16 h-16 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-full flex items-center justify-center hover:from-[#D63F99] hover:to-[#730CCF] transition-colors">
                         <Play size={32} className="text-white ml-1" fill="white" />
                       </div>
                     </button>
@@ -292,22 +291,22 @@ export default function NetworkFeed() {
                 {/* Stats + actions */}
                 <div className="px-4 py-3 border-t border-gray-800 flex items-center justify-between text-sm">
                   <div className="flex gap-6">
-                    <button className="flex items-center gap-1.5 hover:text-red-400 transition-colors">
+                    <button className="flex items-center gap-1.5 hover:text-[#E54FA9] transition-colors">
                       <Heart size={18} /> {post.stats.likes}
                     </button>
                     <button 
                       onClick={() => toggleComments(post.id)}
                       className={`flex items-center gap-1.5 transition-colors ${
-                        expandedComments.includes(post.id) ? 'text-blue-400' : 'hover:text-blue-400'
+                        expandedComments.includes(post.id) ? 'text-[#E54FA9]' : 'hover:text-[#E54FA9]'
                       }`}
                     >
                       <MessageCircle size={18} /> {post.stats.comments}
                     </button>
-                    <button className="flex items-center gap-1.5 hover:text-green-400 transition-colors">
+                    <button className="flex items-center gap-1.5 hover:text-[#E54FA9] transition-colors">
                       <Share2 size={18} /> {post.stats.shares || 0}
                     </button>
                   </div>
-                  <button className="text-gray-400 hover:text-yellow-400 transition-colors">
+                  <button className="text-gray-400 hover:text-[#E54FA9] transition-colors">
                     <Bookmark size={18} />
                   </button>
                 </div>
@@ -317,9 +316,9 @@ export default function NetworkFeed() {
                   <input
                     type="text"
                     placeholder="Add a comment..."
-                    className="flex-1 bg-gray-900 border border-gray-700 rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500"
+                    className="flex-1 bg-gray-900 border border-gray-700 rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-[#E54FA9]"
                   />
-                  <button className="bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-full text-sm font-medium transition-colors">
+                  <button className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-5 py-2.5 rounded-full text-sm font-medium transition-colors">
                     Post
                   </button>
                 </div>
@@ -336,7 +335,7 @@ export default function NetworkFeed() {
                               <span className="font-medium">{comment.user}</span>
                               <span className="text-gray-300"> {comment.text}</span>
                             </div>
-                            <button className="text-gray-400 hover:text-red-400 text-xs flex items-center gap-1">
+                            <button className="text-gray-400 hover:text-[#E54FA9] text-xs flex items-center gap-1">
                               <Heart size={12} /> {comment.likes}
                             </button>
                           </div>
@@ -346,7 +345,7 @@ export default function NetworkFeed() {
                         {post.comments.length > 2 && (
                           <button
                             onClick={() => toggleComments(post.id)}
-                            className="text-blue-400 hover:text-blue-300 text-sm font-medium mt-2"
+                            className="text-[#E54FA9] hover:text-[#D63F99] text-sm font-medium mt-2"
                           >
                             View all {post.comments.length} comments
                           </button>
@@ -366,7 +365,7 @@ export default function NetworkFeed() {
                               </div>
                               <p className="text-gray-300 mt-0.5">{comment.text}</p>
                             </div>
-                            <button className="text-gray-400 hover:text-red-400 text-xs flex items-center gap-1">
+                            <button className="text-gray-400 hover:text-[#E54FA9] text-xs flex items-center gap-1">
                               <Heart size={12} /> {comment.likes}
                             </button>
                           </div>

@@ -22,7 +22,7 @@ const briefs = [
     compensation: "$2,000 – $5,000",
     criteria: 3,
     tag: "Paid",
-    tagColor: "bg-green-900/70 text-green-400",
+    tagColor: "bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 text-transparent bg-clip-text border border-[#E54FA9]/30",
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const briefs = [
     compensation: "40% revenue split",
     criteria: 3,
     tag: "Revenue Share",
-    tagColor: "bg-purple-900/70 text-purple-400",
+    tagColor: "bg-gradient-to-r from-[#831CDF]/20 to-[#E54FA9]/20 text-transparent bg-clip-text border border-[#831CDF]/30",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const briefs = [
     compensation: "$5,000+",
     criteria: 3,
     tag: "Paid",
-    tagColor: "bg-green-900/70 text-green-400",
+    tagColor: "bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 text-transparent bg-clip-text border border-[#E54FA9]/30",
   },
   {
     id: 4,
@@ -68,7 +68,7 @@ const briefs = [
     compensation: "$5,000 – $7,000",
     criteria: 3,
     tag: "Paid",
-    tagColor: "bg-green-900/70 text-green-400",
+    tagColor: "bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 text-transparent bg-clip-text border border-[#E54FA9]/30",
   },
   {
     id: 5,
@@ -83,7 +83,7 @@ const briefs = [
     compensation: "N/A",
     criteria: 3,
     tag: "Collaboration",
-    tagColor: "bg-indigo-900/70 text-indigo-400",
+    tagColor: "bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 text-transparent bg-clip-text border border-[#E54FA9]/30",
   },
 ];
 
@@ -126,7 +126,12 @@ export default function IndustryBriefsPage() {
         }`}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
             <div>
-              <h1 className="text-lg sm:text-xl font-bold">Industry Briefs</h1>
+              <h1 className="text-lg sm:text-xl font-bold">
+                <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                  Industry
+                </span>{' '}
+                Briefs
+              </h1>
               <p className="text-gray-400 text-xs sm:text-sm mt-0.5 hidden xs:block">
                 Exclusive opportunities from labels and industry professionals
               </p>
@@ -136,7 +141,7 @@ export default function IndustryBriefsPage() {
 
         {/* Fixed Search & Filters - Always visible */}
         <div className={`bg-black/95 backdrop-blur-md border-b border-gray-800 transition-all duration-300 ${
-          isScrolled ? 'shadow-lg' : ''
+          isScrolled ? 'shadow-lg shadow-[#831CDF]/10' : ''
         }`}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -149,14 +154,14 @@ export default function IndustryBriefsPage() {
                     placeholder="Search briefs..."
                     value={search}
                     onChange={e => setSearch(e.target.value)}
-                    className="w-full bg-gray-900 border border-gray-800 rounded-lg pl-10 pr-4 py-2.5 sm:py-3 text-sm placeholder-gray-500 focus:border-red-600 focus:outline-none"
+                    className="w-full bg-gray-900 border border-gray-800 rounded-lg pl-10 pr-4 py-2.5 sm:py-3 text-sm placeholder-gray-500 focus:border-[#E54FA9] focus:outline-none focus:ring-1 focus:ring-[#E54FA9] transition-all"
                   />
                 </div>
               </div>
               
               {/* Create Brief Button - Full width on mobile */}
               <Link href="/home/briefs/create-industry-brief" className="sm:w-auto">
-                <button className="w-full bg-red-600 hover:bg-red-700 px-6 py-2.5 rounded-lg font-medium whitespace-nowrap transition text-sm sm:text-base">
+                <button className="w-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-6 py-2.5 rounded-lg font-medium whitespace-nowrap transition text-sm sm:text-base shadow-lg shadow-[#831CDF]/30 active:scale-[0.98]">
                   Create Brief
                 </button>
               </Link>
@@ -176,8 +181,8 @@ export default function IndustryBriefsPage() {
                   onClick={() => setFilter(f.value as any)}
                   className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition flex-shrink-0 ${
                     filter === f.value
-                      ? "bg-red-600 text-white"
-                      : "bg-gray-900 border border-gray-700 hover:bg-gray-800"
+                      ? "bg-gradient-to-r from-[#E54FA9] to-[#831CDF] text-white shadow-lg shadow-[#831CDF]/30"
+                      : "bg-gray-900 border border-gray-700 hover:border-[#E54FA9] hover:text-[#E54FA9]"
                   }`}
                 >
                   {f.label}
@@ -192,11 +197,12 @@ export default function IndustryBriefsPage() {
       <div className="max-w-6xl  mx-auto px-4 sm:px-6 pt-42 lg:pt-36 sm:pt-40 pb-6 sm:pb-8">
         {/* Header with count and submissions link */}
         <div className="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 mb-4 sm:mb-6 text-xs sm:text-sm text-gray-400">
-          <div>Showing {filtered.length} open briefs</div>
+          <div>Showing <span className="text-[#E54FA9]">{filtered.length}</span> open briefs</div>
           <Link href="/home/briefs/my-submissions" className="w-full xs:w-auto">
-            <div className="flex items-center justify-between xs:justify-start text-red-700 gap-2">
-              <span>View your submissions</span>
-         
+            <div className="flex items-center justify-between xs:justify-start gap-2 group">
+              <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent group-hover:from-[#D63F99] group-hover:to-[#730CCF] transition-all">
+                View your submissions
+              </span>
             </div>
           </Link>
         </div>
@@ -206,18 +212,20 @@ export default function IndustryBriefsPage() {
           {filtered.map(brief => (
             <div
               key={brief.id}
-              className="bg-gray-900/80 border border-gray-800 rounded-xl overflow-hidden hover:border-gray-600 transition-colors"
+              className="bg-gray-900/80 border border-gray-800 rounded-xl overflow-hidden hover:border-[#E54FA9]/50 transition-all group"
             >
               <div className="p-4 sm:p-6">
                 {/* Top row - Stack on mobile */}
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="text-base sm:text-lg md:text-xl font-bold break-words pr-2">
+                      <h2 className="text-base sm:text-lg md:text-xl font-bold break-words pr-2 group-hover:text-[#E54FA9] transition-colors">
                         {brief.title}
                       </h2>
                       <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-xs font-medium whitespace-nowrap ${brief.tagColor}`}>
-                        {brief.tag}
+                        <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                          {brief.tag}
+                        </span>
                       </span>
                     </div>
                     <p className="text-gray-400 mt-1 text-xs sm:text-sm break-words">{brief.company}</p>
@@ -226,11 +234,13 @@ export default function IndustryBriefsPage() {
                   {/* Time and button - Stack on smallest screens */}
                   <div className="flex flex-row items-center justify-between sm:flex-col sm:items-end gap-3 sm:gap-2">
                     <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400">
-                      <Clock size={4} className="sm:size-4 flex-shrink-0" />
-                      <span className="whitespace-nowrap">{brief.timeLeft}</span>
+                      <Clock size={16} className="sm:size-4 flex-shrink-0 text-[#E54FA9]" />
+                      <span className="whitespace-nowrap bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                        {brief.timeLeft}
+                      </span>
                     </div>
                     <Link href="/home/briefs/brief-details" className="sm:mt-2">                 
-                      <button className="bg-gray-800 hover:bg-gray-700 px-4 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition whitespace-nowrap">
+                      <button className="bg-gray-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] px-4 sm:px-5 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all hover:text-white hover:shadow-lg hover:shadow-[#831CDF]/30 active:scale-[0.98]">
                         View Details →
                       </button>
                     </Link>
@@ -246,19 +256,21 @@ export default function IndustryBriefsPage() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm border-t border-gray-800 pt-4 sm:pt-5">
                   <div className="min-w-0">
                     <div className="text-gray-500 text-xs sm:text-sm">Genre</div>
-                    <div className="font-medium mt-0.5 truncate">{brief.genre}</div>
+                    <div className="font-medium mt-0.5 truncate group-hover:text-[#E54FA9] transition-colors">{brief.genre}</div>
                   </div>
                   <div className="min-w-0">
                     <div className="text-gray-500 text-xs sm:text-sm">Compensation</div>
-                    <div className="font-medium text-emerald-400 mt-0.5 truncate">{brief.compensation}</div>
+                    <div className="font-medium mt-0.5 truncate bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                      {brief.compensation}
+                    </div>
                   </div>
                   <div className="min-w-0 col-span-2 sm:col-span-1">
                     <div className="text-gray-500 text-xs sm:text-sm">Requirements</div>
-                    <div className="font-medium mt-0.5 truncate">{brief.requirements}</div>
+                    <div className="font-medium mt-0.5 truncate group-hover:text-[#E54FA9] transition-colors">{brief.requirements}</div>
                   </div>
                   <div className="min-w-0">
                     <div className="text-gray-500 text-xs sm:text-sm">Criteria</div>
-                    <div className="font-medium mt-0.5 truncate">{brief.criteria} criteria</div>
+                    <div className="font-medium mt-0.5 truncate group-hover:text-[#E54FA9] transition-colors">{brief.criteria} criteria</div>
                   </div>
                 </div>
               </div>
@@ -272,7 +284,7 @@ export default function IndustryBriefsPage() {
             <p className="text-gray-400 text-sm sm:text-base">No briefs found matching your criteria.</p>
             <button 
               onClick={() => {setSearch(""); setFilter("all");}}
-              className="mt-4 text-red-600 hover:text-red-700 text-sm sm:text-base"
+              className="mt-4 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent hover:from-[#D63F99] hover:to-[#730CCF] text-sm sm:text-base"
             >
               Clear filters
             </button>
