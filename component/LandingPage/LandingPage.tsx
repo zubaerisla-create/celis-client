@@ -577,30 +577,11 @@ export default function LandingPage() {
                {/* Logo Container with Light background for black logo */}
                <div className="relative">
                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#E54FA9] to-[#831CDF] bg-opacity-10 flex items-center justify-center shadow-lg shadow-black/5 border border-[#E54FA9]/20">
-                   <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center">
-                     <Image 
-                       height={28} 
-                       width={28} 
-                       src={logo} 
-                       alt="Spartst Logo"
-                       className="object-contain"
-                       style={{ 
-                         filter: 'brightness(0) saturate(100%)', // এইটা লোগোকে ব্ল্যাক করবে
-                       }}
-                     />
-                   </div>
+                 <LogoContainer/>
                  </div>
                </div>
              
-               {/* Text Section */}
-               <div>
-                 <div className="flex items-center gap-2">
-                   <h2 className="text-white font-bold text-2xl tracking-tight">SPARTST</h2>
-                 </div>
-                 <p className="text-zinc-400 text-xs font-medium flex items-center gap-1.5 mt-0.5">
-                   SPACE FOR ART
-                 </p>
-               </div>
+             
              </div>
             </motion.div>
             <p className="leading-relaxed text-[10px] xs:text-xs flex items-center gap-1">

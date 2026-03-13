@@ -127,7 +127,11 @@ export default function MessagesLayout() {
       `}>
         {/* Header */}
         <div className="p-3 sm:p-4 border-b border-gray-800">
-          <h1 className="text-lg sm:text-xl font-bold">Messages</h1>
+          <h1 className="text-lg sm:text-xl font-bold">
+            <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+              Messages
+            </span>
+          </h1>
         </div>
 
         {/* Search */}
@@ -137,7 +141,7 @@ export default function MessagesLayout() {
             <input
               type="text"
               placeholder="Search conversations..."
-              className="w-full bg-gray-900 text-white placeholder-gray-500 pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-gray-700 focus:outline-none focus:border-blue-500"
+              className="w-full bg-gray-900 text-white placeholder-gray-500 pl-9 sm:pl-10 pr-3 sm:pr-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-gray-700 focus:outline-none focus:border-[#E54FA9] focus:ring-1 focus:ring-[#E54FA9] transition-all"
             />
           </div>
         </div>
@@ -148,9 +152,9 @@ export default function MessagesLayout() {
             <button
               key={conv.id}
               onClick={() => handleSelectConversation(conv)}
-              className={`w-full p-2 sm:p-3 flex gap-2 sm:gap-3 hover:bg-gray-900/70 transition-colors ${
-                selectedConv.id === conv.id && !isMobile ? "bg-gray-800/70" : ""
-              } ${selectedConv.id === conv.id && isMobile && !showMobileList ? "bg-gray-800/70" : ""}`}
+              className={`w-full p-2 sm:p-3 flex gap-2 sm:gap-3 hover:bg-gradient-to-r hover:from-[#E54FA9]/10 hover:to-[#831CDF]/10 transition-all group ${
+                selectedConv.id === conv.id && !isMobile ? "bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 border-l-4 border-[#E54FA9]" : ""
+              } ${selectedConv.id === conv.id && isMobile && !showMobileList ? "bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20" : ""}`}
             >
               <div className="relative flex-shrink-0">
                 <Image
@@ -158,26 +162,26 @@ export default function MessagesLayout() {
                   alt={conv.name}
                   width={48}
                   height={48}
-                  className="rounded-full w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+                  className="rounded-full w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 border-2 border-transparent group-hover:border-[#E54FA9] transition-all"
                 />
                 {conv.online && (
-                  <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 bg-green-500 rounded-full border-2 border-[#0F0F0F]" />
+                  <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-full border-2 border-[#0F0F0F]" />
                 )}
               </div>
 
               <div className="flex-1 min-w-0 text-left">
                 <div className="flex justify-between items-baseline">
-                  <h3 className="font-medium text-sm sm:text-base truncate">{conv.name}</h3>
-                  <span className="text-2xs sm:text-xs text-gray-500 ml-1">{conv.time}</span>
+                  <h3 className="font-medium text-sm sm:text-base truncate group-hover:text-[#E54FA9] transition-colors">{conv.name}</h3>
+                  <span className="text-2xs sm:text-xs text-gray-500 ml-1 group-hover:text-[#E54FA9] transition-colors">{conv.time}</span>
                 </div>
-                <p className="text-2xs sm:text-xs md:text-sm text-gray-400 truncate">{conv.role}</p>
-                <p className="text-xs sm:text-sm text-gray-300 mt-0.5 truncate hidden xs:block">
+                <p className="text-2xs sm:text-xs md:text-sm text-gray-400 truncate group-hover:text-gray-300 transition-colors">{conv.role}</p>
+                <p className="text-xs sm:text-sm text-gray-300 mt-0.5 truncate hidden xs:block group-hover:text-white transition-colors">
                   {conv.lastMessage}
                 </p>
               </div>
 
               {conv.unread > 0 && (
-                <div className="w-4 h-4 sm:w-5 sm:h-5 bg-blue-500 rounded-full text-2xs sm:text-xs font-bold flex items-center justify-center self-center flex-shrink-0">
+                <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-full text-2xs sm:text-xs font-bold flex items-center justify-center self-center flex-shrink-0 text-white">
                   {conv.unread}
                 </div>
               )}
@@ -204,9 +208,9 @@ export default function MessagesLayout() {
               {isMobile && (
                 <button 
                   onClick={handleBackToList}
-                  className="p-1 hover:bg-gray-800 rounded-full mr-1"
+                  className="p-1 hover:bg-[#E54FA9]/20 rounded-full mr-1 transition-colors"
                 >
-                  <ArrowLeft className="w-5 h-5" />
+                  <ArrowLeft className="w-5 h-5 text-[#E54FA9]" />
                 </button>
               )}
               
@@ -216,14 +220,14 @@ export default function MessagesLayout() {
                   alt={selectedConv.name}
                   width={40}
                   height={40}
-                  className="rounded-full w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+                  className="rounded-full w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 border-2 border-transparent hover:border-[#E54FA9] transition-all"
                 />
                 {selectedConv.online && (
-                  <div className="absolute bottom-0 right-0 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full border-2 border-[#0F0F0F]" />
+                  <div className="absolute bottom-0 right-0 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-full border-2 border-[#0F0F0F]" />
                 )}
               </div>
               <div>
-                <h2 className="font-bold text-sm sm:text-base md:text-lg">{selectedConv.name}</h2>
+                <h2 className="font-bold text-sm sm:text-base md:text-lg hover:text-[#E54FA9] transition-colors">{selectedConv.name}</h2>
                 <p className="text-2xs sm:text-xs md:text-sm text-gray-400">
                   {selectedConv.role} • {selectedConv.online ? 'Active now' : 'Offline'}
                 </p>
@@ -231,11 +235,11 @@ export default function MessagesLayout() {
             </div>
 
             <div className="flex gap-2 sm:gap-4 text-gray-400 relative">
-              <Phone className="w-4 h-4 sm:w-5 sm:h-5 hover:text-white cursor-pointer" />
-              <Video className="w-4 h-4 sm:w-5 sm:h-5 hover:text-white cursor-pointer" />
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 hover:text-[#E54FA9] cursor-pointer transition-colors" />
+              <Video className="w-4 h-4 sm:w-5 sm:h-5 hover:text-[#E54FA9] cursor-pointer transition-colors" />
               <div className="relative">
                 <MoreHorizontal 
-                  className="w-4 h-4 sm:w-5 sm:h-5 hover:text-white cursor-pointer" 
+                  className="w-4 h-4 sm:w-5 sm:h-5 hover:text-[#E54FA9] cursor-pointer transition-colors" 
                   onClick={() => setShowDropdown(!showDropdown)}
                 />
                 
@@ -256,25 +260,25 @@ export default function MessagesLayout() {
                       <Link href="/home/friends-profile">
                         <button
                           onClick={handleViewProfile}
-                          className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white hover:bg-gray-700 flex items-center gap-2 transition-colors"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] flex items-center gap-2 transition-all group"
                         >
-                          <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                          View Profile
+                          <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:text-white" />
+                          <span className="group-hover:text-white">View Profile</span>
                         </button>
                       </Link>
                       <button
                         onClick={handleMuteConversation}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white hover:bg-gray-700 flex items-center gap-2 transition-colors"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] flex items-center gap-2 transition-all group"
                       >
-                        <BellOff className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                        Mute Conversation
+                        <BellOff className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:text-white" />
+                        <span className="group-hover:text-white">Mute Conversation</span>
                       </button>
                       <button
                         onClick={handleDeleteConversation}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-red-400 hover:bg-gray-700 flex items-center gap-2 transition-colors"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-red-400 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] flex items-center gap-2 transition-all group"
                       >
-                        <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                        Delete Conversation
+                        <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:text-white" />
+                        <span className="group-hover:text-white">Delete Conversation</span>
                       </button>
                     </div>
                   </>
@@ -298,15 +302,15 @@ export default function MessagesLayout() {
                     alt=""
                     width={28}
                     height={28}
-                    className="rounded-full mr-1.5 sm:mr-2 self-end w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8"
+                    className="rounded-full mr-1.5 sm:mr-2 self-end w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 border-2 border-transparent hover:border-[#E54FA9] transition-all"
                   />
                 )}
 
                 <div
                   className={`max-w-[85%] sm:max-w-[75%] md:max-w-[70%] px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 rounded-2xl ${
                     msg.sender === "me"
-                      ? "bg-blue-600 text-white rounded-br-none"
-                      : "bg-gray-800 text-white rounded-bl-none"
+                      ? "bg-gradient-to-r from-[#E54FA9] to-[#831CDF] text-white rounded-br-none"
+                      : "bg-gray-800 text-white rounded-bl-none hover:bg-gray-700 transition-colors"
                   }`}
                 >
                   <p className="text-xs sm:text-sm md:text-[15px]">{msg.text}</p>
@@ -318,15 +322,15 @@ export default function MessagesLayout() {
 
           {/* Input Area */}
           <div className="p-2 sm:p-3 md:p-4 border-t border-gray-800">
-            <div className="flex items-center gap-1 sm:gap-2 bg-gray-900 rounded-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5">
-              <Paperclip className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 cursor-pointer flex-shrink-0" />
+            <div className="flex items-center gap-1 sm:gap-2 bg-gray-900 rounded-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 md:py-2.5 focus-within:ring-1 focus-within:ring-[#E54FA9] transition-all">
+              <Paperclip className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 cursor-pointer hover:text-[#E54FA9] transition-colors flex-shrink-0" />
               <input
                 type="text"
                 placeholder="Type a message..."
                 className="flex-1 bg-transparent outline-none text-white placeholder-gray-500 text-xs sm:text-sm min-w-0"
               />
-              <Smile className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 cursor-pointer flex-shrink-0" />
-              <button className="bg-blue-600 hover:bg-blue-500 text-white rounded-full p-1.5 sm:p-2 flex-shrink-0">
+              <Smile className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 cursor-pointer hover:text-[#E54FA9] transition-colors flex-shrink-0" />
+              <button className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] text-white rounded-full p-1.5 sm:p-2 flex-shrink-0 shadow-lg shadow-[#831CDF]/30 active:scale-[0.98] transition-all">
                 <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
               </button>
             </div>

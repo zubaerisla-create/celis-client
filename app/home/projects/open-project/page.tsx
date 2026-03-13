@@ -71,21 +71,21 @@ export default function ProjectDetailPage() {
       uploader: "Sarah Chen",
       date: "Feb 20, 2026",
       size: "4.2 MB",
-      waveformColor: "from-rose-500 to-pink-600",
+      waveformColor: "from-[#E54FA9] to-[#831CDF]",
     },
     {
       name: "Vocals_Final_Take.wav",
       uploader: "Marcus Williams",
       date: "Feb 18, 2026",
       size: "12.5 MB",
-      waveformColor: "from-blue-500 to-cyan-600",
+      waveformColor: "from-[#831CDF] to-[#E54FA9]",
     },
     {
       name: "Beat_Version_2.mp3",
       uploader: "Alex Rivera",
       date: "Feb 15, 2026",
       size: "5.8 MB",
-      waveformColor: "from-purple-500 to-indigo-600",
+      waveformColor: "from-[#E54FA9] to-[#831CDF]",
     },
   ];
 
@@ -128,24 +128,29 @@ export default function ProjectDetailPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
-              <button className="text-zinc-400 hover:text-white">
-                <ArrowLeft onClick={()=>router.back()} size={20} />
+              <button 
+                onClick={()=>router.back()} 
+                className="text-zinc-400 hover:text-[#E54FA9] transition-colors"
+              >
+                <ArrowLeft size={20} />
               </button>
               <div>
-                <h1 className="text-xl font-bold">Midnight Echoes Album</h1>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                  Midnight Echoes Album
+                </h1>
                 <p className="text-sm text-zinc-400">R&B • Collaborative Project</p>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="px-3 py-1 bg-blue-950/60 text-blue-400 border border-blue-900/50 rounded-full text-sm font-medium flex items-center gap-1.5">
-                <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                In Progress
+              <div className="px-3 py-1 bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 text-transparent bg-clip-text border border-[#E54FA9]/30 rounded-full text-sm font-medium flex items-center gap-1.5">
+                <span className="w-2 h-2 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-full animate-pulse" />
+                <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">In Progress</span>
               </div>
 
               <button 
                 onClick={() => setShowInviteModal(true)}
-                className="bg-zinc-800 hover:bg-zinc-700 px-4 py-2 rounded-lg text-sm font-medium border border-zinc-700 flex items-center gap-2"
+                className="bg-zinc-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] px-4 py-2 rounded-lg text-sm font-medium border border-zinc-700 hover:border-transparent transition-all flex items-center gap-2"
               >
                 <Users size={16} />
                 Invite Collaborators
@@ -155,7 +160,7 @@ export default function ProjectDetailPage() {
                 {collaborators.slice(0, 3).map((c, i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-xs"
+                    className="w-8 h-8 rounded-full border-2 border-zinc-950 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] flex items-center justify-center text-xs text-white"
                     title={c.name}
                   >
                     {c.name[0]}
@@ -176,9 +181,9 @@ export default function ProjectDetailPage() {
               <div className="flex border-b border-zinc-800">
                 <button
                   onClick={() => setActiveTab("comments")}
-                  className={`flex-1 py-4 text-center font-medium ${
+                  className={`flex-1 py-4 text-center font-medium transition-colors ${
                     activeTab === "comments"
-                      ? "border-b-2 border-rose-500 text-rose-400"
+                      ? "border-b-2 border-[#E54FA9] text-[#E54FA9]"
                       : "text-zinc-400 hover:text-zinc-300"
                   }`}
                 >
@@ -186,9 +191,9 @@ export default function ProjectDetailPage() {
                 </button>
                 <button
                   onClick={() => setActiveTab("splits")}
-                  className={`flex-1 py-4 text-center font-medium ${
+                  className={`flex-1 py-4 text-center font-medium transition-colors ${
                     activeTab === "splits"
-                      ? "border-b-2 border-rose-500 text-rose-400"
+                      ? "border-b-2 border-[#E54FA9] text-[#E54FA9]"
                       : "text-zinc-400 hover:text-zinc-300"
                   }`}
                 >
@@ -201,11 +206,11 @@ export default function ProjectDetailPage() {
                 <div className="p-5 space-y-5">
                   <textarea
                     placeholder="Add a comment..."
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-sm resize-none focus:outline-none focus:border-zinc-600 min-h-[90px]"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-sm resize-none focus:outline-none focus:border-[#E54FA9] transition-colors min-h-[90px]"
                   />
 
                   <div className="flex justify-end">
-                    <button className="bg-rose-600 hover:bg-rose-700 px-5 py-2 rounded-lg font-medium flex items-center gap-2">
+                    <button className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-5 py-2 rounded-lg font-medium flex items-center gap-2 transition-all shadow-lg shadow-[#831CDF]/30 active:scale-[0.98]">
                       <MessageSquare size={16} />
                       Post Comment
                     </button>
@@ -214,10 +219,12 @@ export default function ProjectDetailPage() {
                   {/* Sample comments */}
                   <div className="space-y-4 pt-4 border-t border-zinc-800">
                     <div className="flex gap-3">
-                      <div className="w-9 h-9 rounded-full bg-zinc-700 flex-shrink-0" />
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                        M
+                      </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">Marcus Williams</span>
+                          <span className="font-medium text-[#E54FA9]">Marcus Williams</span>
                           <span className="text-xs text-zinc-500">2 hours ago</span>
                         </div>
                         <p className="mt-1 text-zinc-300">
@@ -226,10 +233,12 @@ export default function ProjectDetailPage() {
                       </div>
                     </div>
                     <div className="flex gap-3">
-                      <div className="w-9 h-9 rounded-full bg-zinc-700 flex-shrink-0" />
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#831CDF] to-[#E54FA9] flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                        A
+                      </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">Alex Rivera</span>
+                          <span className="font-medium text-[#E54FA9]">Alex Rivera</span>
                           <span className="text-xs text-zinc-500">5 hours ago</span>
                         </div>
                         <p className="mt-1 text-zinc-300">
@@ -238,10 +247,12 @@ export default function ProjectDetailPage() {
                       </div>
                     </div>
                     <div className="flex gap-3">
-                      <div className="w-9 h-9 rounded-full bg-zinc-700 flex-shrink-0" />
+                      <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+                        J
+                      </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">Jordan Lee</span>
+                          <span className="font-medium text-[#E54FA9]">Jordan Lee</span>
                           <span className="text-xs text-zinc-500">1 day ago</span>
                         </div>
                         <p className="mt-1 text-zinc-300">
@@ -266,14 +277,14 @@ export default function ProjectDetailPage() {
                         >
                           <X size={16} /> Cancel
                         </button>
-                        <button className="px-4 py-1.5 bg-green-600 hover:bg-green-700 rounded-lg text-sm font-medium flex items-center gap-1.5">
+                        <button className="px-4 py-1.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-lg shadow-[#831CDF]/30">
                           <Check size={16} /> Save
                         </button>
                       </div>
                     ) : (
                       <button
                         onClick={() => setIsEditingSplits(true)}
-                        className="text-sm text-rose-400 hover:text-rose-300 flex items-center gap-1"
+                        className="text-sm text-[#E54FA9] hover:text-[#D63F99] flex items-center gap-1 transition-colors"
                       >
                         <Pencil size={14} /> Edit Splits
                       </button>
@@ -287,7 +298,9 @@ export default function ProjectDetailPage() {
                       <div key={i} className="bg-zinc-950 border border-zinc-800 rounded-lg p-4">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-zinc-700" />
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] flex items-center justify-center text-white font-bold">
+                              {split.name[0]}
+                            </div>
                             <div>
                               <div className="font-medium">{split.name}</div>
                               <div className="text-xs text-zinc-500">{split.role}</div>
@@ -298,7 +311,7 @@ export default function ProjectDetailPage() {
                               <input
                                 type="number"
                                 defaultValue={split.percent}
-                                className="w-16 bg-zinc-900 border border-zinc-700 rounded px-2 py-1 text-center text-sm"
+                                className="w-16 bg-zinc-900 border border-zinc-700 rounded px-2 py-1 text-center text-sm focus:border-[#E54FA9] focus:outline-none"
                                 min="0"
                                 max="100"
                               />
@@ -306,15 +319,18 @@ export default function ProjectDetailPage() {
                             </div>
                           ) : (
                             <div className="text-right">
-                              <div className="text-rose-400 font-medium">{split.percent}%</div>
+                              <div className="text-[#E54FA9] font-medium">{split.percent}%</div>
                             </div>
                           )}
                         </div>
 
                         <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-rose-600 rounded-full"
-                            style={{ width: `${split.percent}%` }}
+                            className="h-full rounded-full transition-all"
+                            style={{ 
+                              width: `${split.percent}%`,
+                              background: 'linear-gradient(to right, #E54FA9, #831CDF)'
+                            }}
                           />
                         </div>
                       </div>
@@ -329,9 +345,9 @@ export default function ProjectDetailPage() {
               <div className="flex border-b border-zinc-800">
                 <button
                   onClick={() => setActiveFileTab("audio")}
-                  className={`flex-1 py-4 px-5 text-left font-medium ${
+                  className={`flex-1 py-4 px-5 text-left font-medium transition-colors ${
                     activeFileTab === "audio"
-                      ? "bg-zinc-800/60 border-b-2 border-rose-500"
+                      ? "bg-zinc-800/60 border-b-2 border-[#E54FA9] text-[#E54FA9]"
                       : "text-zinc-400 hover:text-zinc-300"
                   }`}
                 >
@@ -339,9 +355,9 @@ export default function ProjectDetailPage() {
                 </button>
                 <button
                   onClick={() => setActiveFileTab("lyrics")}
-                  className={`flex-1 py-4 px-5 text-left font-medium ${
+                  className={`flex-1 py-4 px-5 text-left font-medium transition-colors ${
                     activeFileTab === "lyrics"
-                      ? "bg-zinc-800/60 border-b-2 border-rose-500"
+                      ? "bg-zinc-800/60 border-b-2 border-[#E54FA9] text-[#E54FA9]"
                       : "text-zinc-400 hover:text-zinc-300"
                   }`}
                 >
@@ -355,7 +371,7 @@ export default function ProjectDetailPage() {
                     <div className="flex justify-end mb-4">
                       <button
                         onClick={() => setShowUploadModal(true)}
-                        className="bg-rose-600 hover:bg-rose-700 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
+                        className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-lg shadow-[#831CDF]/30 transition-all active:scale-[0.98]"
                       >
                         <Upload size={16} />
                         Upload Audio
@@ -366,15 +382,15 @@ export default function ProjectDetailPage() {
                       {audioFiles.map((file, i) => (
                         <div
                           key={i}
-                          className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 hover:border-zinc-700 transition-colors group"
+                          className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 hover:border-[#E54FA9]/50 transition-colors group"
                         >
                           <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 bg-gradient-to-br from-zinc-700 to-zinc-800 rounded-lg flex items-center justify-center">
-                                <Music size={18} className="text-zinc-400" />
+                              <div className="w-10 h-10 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-lg flex items-center justify-center">
+                                <Music size={18} className="text-white" />
                               </div>
                               <div>
-                                <div className="font-medium">{file.name}</div>
+                                <div className="font-medium group-hover:text-[#E54FA9] transition-colors">{file.name}</div>
                                 <div className="text-xs text-zinc-500">
                                   by {file.uploader} • {file.date} • {file.size}
                                 </div>
@@ -382,13 +398,13 @@ export default function ProjectDetailPage() {
                             </div>
 
                             <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                              <button className="text-zinc-400 hover:text-white">
+                              <button className="text-zinc-400 hover:text-[#E54FA9] transition-colors">
                                 <Play size={18} />
                               </button>
-                              <button className="text-zinc-400 hover:text-white">
+                              <button className="text-zinc-400 hover:text-[#E54FA9] transition-colors">
                                 <Download size={18} />
                               </button>
-                              <button className="text-zinc-400 hover:text-white">
+                              <button className="text-zinc-400 hover:text-[#E54FA9] transition-colors">
                                 <MoreVertical size={18} />
                               </button>
                             </div>
@@ -407,7 +423,7 @@ export default function ProjectDetailPage() {
                     <div className="flex justify-end mb-4">
                       <button
                         onClick={() => setShowUploadModal(true)}
-                        className="bg-rose-600 hover:bg-rose-700 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
+                        className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-lg shadow-[#831CDF]/30 transition-all active:scale-[0.98]"
                       >
                         <Upload size={16} />
                         Upload Lyrics
@@ -419,19 +435,19 @@ export default function ProjectDetailPage() {
                         <div
                           key={i}
                           onClick={() => handleOpenLyrics(file)}
-                          className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 hover:border-zinc-700 transition-colors cursor-pointer group"
+                          className="bg-zinc-950 border border-zinc-800 rounded-lg p-4 hover:border-[#E54FA9]/50 transition-colors cursor-pointer group"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-zinc-700 to-zinc-800 rounded-lg flex items-center justify-center">
-                              <FileText size={18} className="text-zinc-400" />
+                            <div className="w-10 h-10 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] rounded-lg flex items-center justify-center">
+                              <FileText size={18} className="text-white" />
                             </div>
                             <div className="flex-1">
-                              <div className="font-medium">{file.name}</div>
+                              <div className="font-medium group-hover:text-[#E54FA9] transition-colors">{file.name}</div>
                               <div className="text-xs text-zinc-500">
                                 by {file.uploader} • {file.date}
                               </div>
                             </div>
-                            <button className="text-zinc-400 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button className="text-zinc-400 hover:text-[#E54FA9] transition-colors opacity-0 group-hover:opacity-100">
                               <Download size={18} />
                             </button>
                           </div>
@@ -449,24 +465,24 @@ export default function ProjectDetailPage() {
             {/* Collaborators */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <Users size={18} className="text-zinc-400" />
+                <Users size={18} className="text-[#E54FA9]" />
                 Collaborators
               </h3>
 
               <div className="space-y-4">
                 {collaborators.map((collab, i) => (
-                  <div key={i} className="flex items-center justify-between">
+                  <div key={i} className="flex items-center justify-between group">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-zinc-700 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#E54FA9] to-[#831CDF] flex items-center justify-center text-white font-bold">
                         {collab.name[0]}
                       </div>
                       <div>
-                        <div className="font-medium">{collab.name}</div>
+                        <div className="font-medium group-hover:text-[#E54FA9] transition-colors">{collab.name}</div>
                         <div className="text-xs text-zinc-500">{collab.role}</div>
                       </div>
                     </div>
                     {!collab.isYou && (
-                      <button className="text-zinc-500 hover:text-zinc-300">
+                      <button className="text-zinc-500 hover:text-[#E54FA9] transition-colors">
                         <MoreVertical size={18} />
                       </button>
                     )}
@@ -483,28 +499,34 @@ export default function ProjectDetailPage() {
                 <div>
                   <div className="flex justify-between text-sm mb-1.5">
                     <span>Overall</span>
-                    <span className="text-rose-400">65%</span>
+                    <span className="text-[#E54FA9]">65%</span>
                   </div>
                   <div className="h-2.5 bg-zinc-800 rounded-full overflow-hidden">
-                    <div className="h-full w-[65%] bg-rose-600 rounded-full" />
+                    <div 
+                      className="h-full rounded-full transition-all"
+                      style={{ 
+                        width: '65%',
+                        background: 'linear-gradient(to right, #E54FA9, #831CDF)'
+                      }}
+                    />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 text-sm text-zinc-300 border-t border-zinc-800 pt-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold">24</div>
+                    <div className="text-2xl font-bold text-[#E54FA9]">24</div>
                     <div className="text-xs text-zinc-500">Total Files</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold">3</div>
+                    <div className="text-2xl font-bold text-[#E54FA9]">3</div>
                     <div className="text-xs text-zinc-500">Audio</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold">2</div>
+                    <div className="text-2xl font-bold text-[#E54FA9]">2</div>
                     <div className="text-xs text-zinc-500">Lyrics</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold">6</div>
+                    <div className="text-2xl font-bold text-[#E54FA9]">6</div>
                     <div className="text-xs text-zinc-500">Comments</div>
                   </div>
                 </div>
@@ -520,10 +542,12 @@ export default function ProjectDetailPage() {
           <div className="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-md">
             <div className="p-6">
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-xl font-bold">Invite Collaborators</h3>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                  Invite Collaborators
+                </h3>
                 <button
                   onClick={() => setShowInviteModal(false)}
-                  className="text-zinc-400 hover:text-white"
+                  className="text-zinc-400 hover:text-[#E54FA9] transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -541,14 +565,14 @@ export default function ProjectDetailPage() {
                     <input
                       type="text"
                       placeholder="Search by name or email..."
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-zinc-600"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#E54FA9] transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Assign Role</label>
-                  <select className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-600">
+                  <select className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#E54FA9] transition-colors">
                     <option>Collaborator</option>
                     <option>Producer</option>
                     <option>Songwriter</option>
@@ -561,7 +585,7 @@ export default function ProjectDetailPage() {
                   <textarea
                     placeholder="Add a personal message to the invitation..."
                     rows={3}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm resize-none focus:outline-none focus:border-zinc-600"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm resize-none focus:outline-none focus:border-[#E54FA9] transition-colors"
                   />
                 </div>
               </div>
@@ -570,11 +594,11 @@ export default function ProjectDetailPage() {
             <div className="border-t border-zinc-800 p-5 flex gap-3 justify-end">
               <button
                 onClick={() => setShowInviteModal(false)}
-                className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700"
+                className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-colors"
               >
                 Cancel
               </button>
-              <button className="px-6 py-2.5 bg-rose-600 hover:bg-rose-700 rounded-lg font-medium">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg font-medium shadow-lg shadow-[#831CDF]/30 transition-all active:scale-[0.98]">
                 Send Invitation
               </button>
             </div>
@@ -588,10 +612,12 @@ export default function ProjectDetailPage() {
           <div className="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-md">
             <div className="p-6">
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-xl font-bold">Upload {activeFileTab === "audio" ? "Audio" : "Lyrics"} File</h3>
+                <h3 className="text-xl font-bold bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                  Upload {activeFileTab === "audio" ? "Audio" : "Lyrics"} File
+                </h3>
                 <button
                   onClick={() => setShowUploadModal(false)}
-                  className="text-zinc-400 hover:text-white"
+                  className="text-zinc-400 hover:text-[#E54FA9] transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -603,15 +629,17 @@ export default function ProjectDetailPage() {
                   <input
                     type="text"
                     placeholder={activeFileTab === "audio" ? "e.g. Hook_Final_v3.mp3" : "e.g. Verse_1_Draft.txt"}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-zinc-600"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#E54FA9] transition-colors"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Upload File</label>
-                  <div className="border-2 border-dashed border-zinc-700 rounded-lg p-8 text-center hover:border-rose-600/50 transition-colors cursor-pointer">
-                    <Upload className="mx-auto mb-3 text-zinc-500" size={32} />
-                    <p className="text-sm text-zinc-400">Click or drag {activeFileTab === "audio" ? "audio" : "text"} file here</p>
+                  <div className="border-2 border-dashed border-zinc-700 rounded-lg p-8 text-center hover:border-[#E54FA9]/50 transition-colors cursor-pointer group">
+                    <Upload className="mx-auto mb-3 text-zinc-500 group-hover:text-[#E54FA9] transition-colors" size={32} />
+                    <p className="text-sm text-zinc-400 group-hover:text-[#E54FA9] transition-colors">
+                      Click or drag {activeFileTab === "audio" ? "audio" : "text"} file here
+                    </p>
                     <p className="text-xs text-zinc-600 mt-1">
                       {activeFileTab === "audio" ? "MP3, WAV • max 50 MB" : "TXT, DOCX • max 10 MB"}
                     </p>
@@ -623,11 +651,11 @@ export default function ProjectDetailPage() {
             <div className="border-t border-zinc-800 p-5 flex gap-3 justify-end">
               <button
                 onClick={() => setShowUploadModal(false)}
-                className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700"
+                className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-colors"
               >
                 Cancel
               </button>
-              <button className="px-6 py-2.5 bg-rose-600 hover:bg-rose-700 rounded-lg font-medium">
+              <button className="px-6 py-2.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg font-medium shadow-lg shadow-[#831CDF]/30 transition-all active:scale-[0.98]">
                 Upload
               </button>
             </div>
@@ -642,14 +670,16 @@ export default function ProjectDetailPage() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-xl font-bold">{selectedLyrics.name}</h3>
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                    {selectedLyrics.name}
+                  </h3>
                   <p className="text-sm text-zinc-400">
                     by {selectedLyrics.uploader} • {selectedLyrics.date}
                   </p>
                 </div>
                 <button
                   onClick={() => setShowLyricsModal(false)}
-                  className="text-zinc-400 hover:text-white"
+                  className="text-zinc-400 hover:text-[#E54FA9] transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -664,11 +694,11 @@ export default function ProjectDetailPage() {
               <div className="flex gap-3 justify-end">
                 <button
                   onClick={() => setShowLyricsModal(false)}
-                  className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700"
+                  className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded-lg border border-zinc-700 transition-colors"
                 >
                   Close
                 </button>
-                <button className="px-6 py-2.5 bg-rose-600 hover:bg-rose-700 rounded-lg font-medium flex items-center gap-2">
+                <button className="px-6 py-2.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg font-medium flex items-center gap-2 shadow-lg shadow-[#831CDF]/30 transition-all active:scale-[0.98]">
                   <Download size={16} />
                   Download
                 </button>

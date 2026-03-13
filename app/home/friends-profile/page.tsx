@@ -31,7 +31,7 @@ const posts = [
     likes: 245,
     comments: 38,
     media: "audio",
-    gradient: "from-amber-900 to-rose-950",
+    gradient: "from-[#E54FA9]/40 to-[#831CDF]/40",
   },
   {
     title: "Summer Vibes Beat",
@@ -41,7 +41,7 @@ const posts = [
     comments: 124,
     media: "audio",
     waveform: true,
-    gradient: "from-blue-950 to-indigo-950",
+    gradient: "from-[#831CDF]/40 to-[#E54FA9]/40",
   },
   // ... more items
 ];
@@ -54,7 +54,7 @@ const briefs = [
     timeLeft: "5 days left",
     paidStatus: "Paid",
     submissions: 23,
-    gradient: "from-red-950/80",
+    gradient: "from-[#E54FA9]/20",
   },
   {
     title: "Summer Pop Track",
@@ -138,7 +138,7 @@ export default function ProfilePage() {
         <div className="flex flex-col md:flex-row md:items-end gap-6">
           {/* Avatar */}
           <div className="relative -mt-20">
-            <div className="w-36 h-36 rounded-full border-4 border-black overflow-hidden relative">
+            <div className="w-36 h-36 rounded-full border-4 border-[#E54FA9] overflow-hidden relative shadow-lg shadow-[#831CDF]/30">
               <Image
                 src={profile.avatar}
                 alt={profile.name}
@@ -152,37 +152,41 @@ export default function ProfilePage() {
           <div className="flex-1">
             <div className="flex justify-between items-center flex-wrap gap-4">
               <div>
-                <h1 className="text-3xl font-bold">{profile.name}</h1>
+                <h1 className="text-3xl font-bold">
+                  <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                    {profile.name}
+                  </span>
+                </h1>
                 <p className="text-gray-400 mt-1">{profile.role}</p>
               </div>
 
               {/* Action Buttons */}
               <div className="flex gap-3 items-center">
-                <button className="bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-full flex items-center gap-2 transition">
+                <button className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] px-5 py-2.5 rounded-full flex items-center gap-2 transition shadow-lg shadow-[#831CDF]/30 active:scale-[0.98]">
                   <UserPlus size={18} />
                   Connect
                 </button>
 
                 <Link href="/home/message">
-                  <button className="bg-gray-800 hover:bg-gray-700 px-5 py-2.5 rounded-full flex items-center gap-2 transition">
-                    <MessageCircle size={18} />
-                    Message
+                  <button className="bg-gray-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] px-5 py-2.5 rounded-full flex items-center gap-2 transition group">
+                    <MessageCircle size={18} className="group-hover:text-white" />
+                    <span className="group-hover:text-white">Message</span>
                   </button>
                 </Link>
 
-                <button className="bg-gray-800 hover:bg-gray-700 p-2.5 rounded-full transition">
-                  <Share2 size={18} />
+                <button className="bg-gray-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] p-2.5 rounded-full transition group">
+                  <Share2 size={18} className="group-hover:text-white" />
                 </button>
 
                 {/* Dropdown */}
                 <div className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="bg-gray-800 hover:bg-gray-700 p-2.5 rounded-full transition flex items-center gap-1"
+                    className="bg-gray-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] p-2.5 rounded-full transition flex items-center gap-1 group"
                   >
-                    <Flag size={18} />
+                    <Flag size={18} className="group-hover:text-white" />
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
+                      className={`w-4 h-4 transition-transform group-hover:text-white ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -197,11 +201,11 @@ export default function ProfilePage() {
                             setSelected(option);
                             setIsOpen(false);
                           }}
-                          className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 transition-colors"
+                          className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-zinc-300 hover:bg-gradient-to-r hover:from-[#E54FA9]/10 hover:to-[#831CDF]/10 transition-colors group"
                         >
-                          {option}
+                          <span className="group-hover:text-[#E54FA9]">{option}</span>
                           {selected === option && (
-                            <Check className="w-4 h-4 text-green-500 shrink-0" />
+                            <Check className="w-4 h-4 text-[#E54FA9] shrink-0" />
                           )}
                         </button>
                       ))}
@@ -214,18 +218,18 @@ export default function ProfilePage() {
             {/* Info Row */}
             <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-400">
               <div className="flex items-center gap-1.5">
-                <MapPin size={16} />
+                <MapPin size={16} className="text-[#E54FA9]" />
                 {profile.location}
               </div>
               <div className="flex items-center gap-1.5">
-                <Calendar size={16} />
+                <Calendar size={16} className="text-[#E54FA9]" />
                 {profile.joined}
               </div>
               <div className="flex items-center gap-1.5">
-                <LinkIcon size={16} />
+                <LinkIcon size={16} className="text-[#E54FA9]" />
                 <a
                   href={`https://${profile.website}`}
-                  className="hover:text-blue-400"
+                  className="hover:text-[#E54FA9] transition-colors"
                 >
                   {profile.website}
                 </a>
@@ -239,10 +243,10 @@ export default function ProfilePage() {
           {Object.entries(profile.stats).map(([key, value]) => (
             <div
               key={key}
-              className="bg-black/40 border border-gray-800 rounded-lg p-4 text-center"
+              className="bg-black/40 border border-gray-800 rounded-lg p-4 text-center hover:border-[#E54FA9]/50 transition-all group"
             >
-              <div className="text-2xl font-bold">{value}</div>
-              <div className="text-gray-500 text-sm capitalize">{key}</div>
+              <div className="text-2xl font-bold text-[#E54FA9]">{value}</div>
+              <div className="text-gray-500 text-sm capitalize group-hover:text-[#E54FA9] transition-colors">{key}</div>
             </div>
           ))}
         </div>
@@ -256,8 +260,8 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 min-w-[100px] py-4 px-6 text-center font-medium border-b-2 transition-colors ${
                   activeTab === tab
-                    ? "border-red-600 text-white"
-                    : "border-transparent text-gray-400 hover:text-gray-300"
+                    ? "border-[#E54FA9] text-[#E54FA9]"
+                    : "border-transparent text-gray-400 hover:text-gray-300 hover:border-[#E54FA9]/50"
                 }`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -277,20 +281,20 @@ export default function ProfilePage() {
                 >
                   <div className="absolute inset-0 p-5 flex flex-col justify-between">
                     <div className="flex justify-end">
-                      {post.type === "lyrics" && <span className="bg-black/60 px-3 py-1 rounded-full text-xs">Lyrics</span>}
-                      {post.type === "beat" && <span className="bg-black/60 px-3 py-1 rounded-full text-xs">Beat</span>}
+                      {post.type === "lyrics" && <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] px-3 py-1 rounded-full text-xs text-white">Lyrics</span>}
+                      {post.type === "beat" && <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] px-3 py-1 rounded-full text-xs text-white">Beat</span>}
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg">{post.title}</h3>
-                      <p className="text-sm text-gray-300 mt-1 line-clamp-2">{post.description}</p>
+                      <h3 className="font-bold text-lg group-hover:text-[#E54FA9] transition-colors">{post.title}</h3>
+                      <p className="text-sm text-gray-300 mt-1 line-clamp-2 group-hover:text-white transition-colors">{post.description}</p>
                       {post.waveform && (
-                        <div className="mt-3 h-10 bg-black/30 rounded flex items-center justify-center text-xs">
+                        <div className="mt-3 h-10 bg-gradient-to-r from-[#E54FA9]/30 to-[#831CDF]/30 rounded flex items-center justify-center text-xs">
                           Waveform placeholder
                         </div>
                       )}
                       <div className="mt-3 flex gap-4 text-sm">
-                        <span>♥ {post.likes}</span>
-                        <span>💬 {post.comments}</span>
+                        <span className="group-hover:text-[#E54FA9] transition-colors">♥ {post.likes}</span>
+                        <span className="group-hover:text-[#E54FA9] transition-colors">💬 {post.comments}</span>
                       </div>
                     </div>
                   </div>
@@ -304,23 +308,22 @@ export default function ProfilePage() {
               {briefs.map((brief, i) => (
                 <div
                   key={i}
-                  className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 hover:border-gray-600 transition-colors"
+                  className="bg-gray-900/60 border border-gray-800 rounded-xl p-5 hover:border-[#E54FA9]/50 transition-all group"
                 >
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-bold text-lg">{brief.title}</h3>
-                      <p className="text-gray-400 mt-1">{brief.with}</p>
+                      <h3 className="font-bold text-lg group-hover:text-[#E54FA9] transition-colors">{brief.title}</h3>
+                      <p className="text-gray-400 mt-1 group-hover:text-gray-300 transition-colors">{brief.with}</p>
                     </div>
-                    <button className="bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-full text-sm font-medium">
-                      View
+                    <button className="bg-gray-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] px-5 py-2 rounded-full text-sm font-medium transition-all group/btn">
+                      <span className="group-hover/btn:text-white">View</span>
                     </button>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-4 text-sm text-gray-300">
-                   <span className="bg-red-600 p-1 pl-4 pr-4 rounded-full" >{brief.paidStatus}</span>
-                    {brief.paid && <span className="font-medium text-green-400">{brief.paid}</span>}
-                    <span>{brief.timeLeft}</span>
-                    
-                    <span>{brief.submissions} submissions</span>
+                    <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] p-1 pl-4 pr-4 rounded-full text-white" >{brief.paidStatus}</span>
+                    {brief.paid && <span className="font-medium text-[#E54FA9]">{brief.paid}</span>}
+                    <span className="group-hover:text-[#E54FA9] transition-colors">{brief.timeLeft}</span>
+                    <span className="group-hover:text-[#E54FA9] transition-colors">{brief.submissions} submissions</span>
                   </div>
                 </div>
               ))}
@@ -328,17 +331,17 @@ export default function ProfilePage() {
           )}
 
           {activeTab === "about" && (
-            <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-6 md:p-8 space-y-8">
+            <div className="bg-gray-900/60 border border-gray-800 rounded-xl p-6 md:p-8 space-y-8 hover:border-[#E54FA9]/50 transition-all">
               <div>
-                <h3 className="text-xl font-bold mb-3">Bio</h3>
+                <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Bio</h3>
                 <p className="text-gray-300 leading-relaxed">{about.bio}</p>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold mb-3">Genres & Skills</h3>
+                <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Genres & Skills</h3>
                 <div className="flex flex-wrap gap-2">
                   {about.genres.map((g) => (
-                    <span key={g} className="bg-gray-800 px-3 py-1.5 rounded-full text-sm">
+                    <span key={g} className="bg-gray-800 px-3 py-1.5 rounded-full text-sm hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] hover:text-white transition-all">
                       {g}
                     </span>
                   ))}
@@ -346,17 +349,17 @@ export default function ProfilePage() {
               </div>
 
               <div>
-                <h3 className="text-xl font-bold mb-3">Equipment & Software</h3>
+                <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Equipment & Software</h3>
                 <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-gray-300">
                   {about.equipment.map((item) => (
-                    <li key={item}>• {item}</li>
+                    <li key={item} className="hover:text-[#E54FA9] transition-colors">• {item}</li>
                   ))}
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold mb-3">Looking For</h3>
-                <p className="text-gray-300">{about.lookingFor}</p>
+                <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">Looking For</h3>
+                <p className="text-gray-300 hover:text-[#E54FA9] transition-colors">{about.lookingFor}</p>
               </div>
             </div>
           )}
@@ -364,9 +367,9 @@ export default function ProfilePage() {
           {activeTab === "activity" && (
             <div className="space-y-4">
               {activity.map((item, i) => (
-                <div key={i} className="bg-gray-900/40 border border-gray-800 rounded-lg p-5">
-                  <p className="font-medium">{item.text}</p>
-                  <p className="text-gray-500 text-sm mt-1">{item.time}</p>
+                <div key={i} className="bg-gray-900/40 border border-gray-800 rounded-lg p-5 hover:border-[#E54FA9]/50 transition-all group">
+                  <p className="font-medium group-hover:text-[#E54FA9] transition-colors">{item.text}</p>
+                  <p className="text-gray-500 text-sm mt-1 group-hover:text-[#E54FA9] transition-colors">{item.time}</p>
                 </div>
               ))}
             </div>

@@ -27,10 +27,10 @@ export default function CreatePost() {
 
   const getTypeIcon = () => {
     switch (postType) {
-      case "lyrics": return <FileText className="w-5 h-5" />;
-      case "audio":  return <Music className="w-5 h-5" />;
-      case "video":  return <Video className="w-5 h-5" />;
-      case "photo":  return <ImageIcon className="w-5 h-5" />;
+      case "lyrics": return <FileText className="w-5 h-5 text-[#E54FA9]" />;
+      case "audio":  return <Music className="w-5 h-5 text-[#E54FA9]" />;
+      case "video":  return <Video className="w-5 h-5 text-[#E54FA9]" />;
+      case "photo":  return <ImageIcon className="w-5 h-5 text-[#E54FA9]" />;
       default: return null;
     }
   };
@@ -65,11 +65,16 @@ export default function CreatePost() {
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center gap-4">
           <button 
             onClick={() => step === "form" ? changeType() : window.history.back()}
-            className="text-gray-300 hover:text-white"
+            className="text-gray-300 hover:text-[#E54FA9] transition-colors"
           >
             <ArrowLeft size={24} />
           </button>
-          <h1 className="text-xl font-bold">Create Post</h1>
+          <h1 className="text-xl font-bold">
+            <span className="bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+              Create
+            </span>{' '}
+            Post
+          </h1>
         </div>
       </div>
 
@@ -93,13 +98,13 @@ export default function CreatePost() {
                 <button
                   key={item.type}
                   onClick={() => selectType(item.type as PostType)}
-                  className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-600 transition-all group text-left"
+                  className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-[#E54FA9]/50 transition-all group text-left"
                 >
-                  <div className="w-14 h-14 bg-gray-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gray-700 transition-colors">
-                    <item.icon size={28} className="text-red-500" />
+                  <div className="w-14 h-14 bg-gray-800 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gradient-to-r group-hover:from-[#E54FA9]/20 group-hover:to-[#831CDF]/20 transition-colors">
+                    <item.icon size={28} className="text-[#E54FA9] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-1">{item.label}</h3>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
+                  <h3 className="text-xl font-semibold mb-1 group-hover:text-[#E54FA9] transition-colors">{item.label}</h3>
+                  <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">{item.desc}</p>
                 </button>
               ))}
             </div>
@@ -107,16 +112,18 @@ export default function CreatePost() {
         ) : (
           <>
             {/* Form Header */}
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-6 flex items-center justify-between">
+            <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-6 flex items-center justify-between hover:border-[#E54FA9]/50 transition-all">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-red-900/40 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-[#E54FA9]/20 to-[#831CDF]/20 rounded-lg flex items-center justify-center">
                   {getTypeIcon()}
                 </div>
-                <h2 className="text-xl font-bold">{getTypeLabel()}</h2>
+                <h2 className="text-xl font-bold bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                  {getTypeLabel()}
+                </h2>
               </div>
               <button
                 onClick={changeType}
-                className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                className="text-sm text-[#E54FA9] hover:text-[#D63F99] flex items-center gap-1 transition-colors"
               >
                 Change Type <ChevronDown size={16} />
               </button>
@@ -127,12 +134,12 @@ export default function CreatePost() {
               {/* Title */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Title <span className="text-red-500">*</span>
+                  Title <span className="text-[#E54FA9]">*</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Give your post a title..."
-                  className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-red-600"
+                  className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#E54FA9] focus:ring-1 focus:ring-[#E54FA9] transition-all"
                 />
               </div>
 
@@ -142,7 +149,7 @@ export default function CreatePost() {
                 <textarea
                   rows={3}
                   placeholder="Add a description or context for your post..."
-                  className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-red-600 resize-none"
+                  className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#E54FA9] focus:ring-1 focus:ring-[#E54FA9] transition-all resize-none"
                 />
               </div>
 
@@ -150,7 +157,7 @@ export default function CreatePost() {
               {postType === "lyrics" ? (
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Lyrics <span className="text-red-500">*</span>
+                    Lyrics <span className="text-[#E54FA9]">*</span>
                   </label>
                   <textarea
                     rows={12}
@@ -160,7 +167,7 @@ export default function CreatePost() {
 
 [Chorus]
 ..."
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 font-mono text-sm focus:outline-none focus:border-red-600 resize-y"
+                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 font-mono text-sm focus:outline-none focus:border-[#E54FA9] focus:ring-1 focus:ring-[#E54FA9] transition-all resize-y"
                   />
                 </div>
               ) : (
@@ -168,10 +175,10 @@ export default function CreatePost() {
                   <label className="block text-sm font-medium mb-2">
                     {getUploadLabel()}
                   </label>
-                  <div className="border-2 border-dashed border-gray-700 rounded-xl p-10 text-center hover:border-gray-500 transition-colors cursor-pointer bg-gray-950/50">
-                    <Upload className="mx-auto mb-4 text-gray-500" size={40} />
-                    <p className="text-gray-300 mb-1">Click to upload or drag and drop</p>
-                    <p className="text-sm text-gray-500">{getFileFormats()}</p>
+                  <div className="border-2 border-dashed border-gray-700 rounded-xl p-10 text-center hover:border-[#E54FA9] transition-colors cursor-pointer bg-gray-950/50 group">
+                    <Upload className="mx-auto mb-4 text-gray-500 group-hover:text-[#E54FA9] transition-colors" size={40} />
+                    <p className="text-gray-300 mb-1 group-hover:text-[#E54FA9] transition-colors">Click to upload or drag and drop</p>
+                    <p className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">{getFileFormats()}</p>
                   </div>
                 </div>
               )}
@@ -185,7 +192,7 @@ export default function CreatePost() {
                   {GENRES.map(genre => (
                     <button
                       key={genre}
-                      className="px-4 py-2 bg-gray-800 rounded-full text-sm hover:bg-gray-700 transition-colors"
+                      className="px-4 py-2 bg-gray-800 rounded-full text-sm hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] hover:text-white transition-all"
                     >
                       {genre}
                     </button>
@@ -194,30 +201,32 @@ export default function CreatePost() {
               </div>
 
               {/* Post Options */}
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-                <h3 className="font-medium mb-4">Post Options</h3>
+              <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 hover:border-[#E54FA9]/50 transition-all">
+                <h3 className="font-medium mb-4 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] bg-clip-text text-transparent">
+                  Post Options
+                </h3>
                 <div className="space-y-3">
-                  <label className="flex items-center gap-3">
-                    <input type="checkbox" className="w-5 h-5 accent-red-600" />
-                    <span>Allow downloads</span>
+                  <label className="flex items-center gap-3 group">
+                    <input type="checkbox" className="w-5 h-5 accent-[#E54FA9]" />
+                    <span className="group-hover:text-[#E54FA9] transition-colors">Allow downloads</span>
                   </label>
-                  <label className="flex items-center gap-3">
-                    <input type="checkbox" className="w-5 h-5 accent-red-600" defaultChecked />
-                    <span>Allow comments</span>
+                  <label className="flex items-center gap-3 group">
+                    <input type="checkbox" className="w-5 h-5 accent-[#E54FA9]" defaultChecked />
+                    <span className="group-hover:text-[#E54FA9] transition-colors">Allow comments</span>
                   </label>
-                  <label className="flex items-center gap-3">
-                    <input type="checkbox" className="w-5 h-5 accent-red-600" defaultChecked />
-                    <span>Mark as available for collaboration</span>
+                  <label className="flex items-center gap-3 group">
+                    <input type="checkbox" className="w-5 h-5 accent-[#E54FA9]" defaultChecked />
+                    <span className="group-hover:text-[#E54FA9] transition-colors">Mark as available for collaboration</span>
                   </label>
                 </div>
               </div>
 
               {/* Actions */}
               <div className="flex gap-4 pt-4">
-                <button className="flex-1 py-3.5 bg-gray-800 hover:bg-gray-700 rounded-lg font-medium transition">
-                  Cancel
+                <button className="flex-1 py-3.5 bg-gray-800 hover:bg-gradient-to-r hover:from-[#E54FA9] hover:to-[#831CDF] rounded-lg font-medium transition-all group">
+                  <span className="group-hover:text-white">Cancel</span>
                 </button>
-                <button className="flex-1 py-3.5 bg-red-600 hover:bg-red-700 rounded-lg font-medium transition">
+                <button className="flex-1 py-3.5 bg-gradient-to-r from-[#E54FA9] to-[#831CDF] hover:from-[#D63F99] hover:to-[#730CCF] rounded-lg font-medium text-white shadow-lg shadow-[#831CDF]/30 active:scale-[0.98] transition-all">
                   Publish Post
                 </button>
               </div>
